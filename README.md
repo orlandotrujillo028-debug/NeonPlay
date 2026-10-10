@@ -159,3 +159,9 @@ Esta entrega está preparada para desarrollo local en VS Code. Pasarela de pago,
 Referencias oficiales de implementación: [Vite](https://vite.dev/guide/), [Tailwind con Vite](https://tailwindcss.com/docs/installation/using-vite), [transacciones de Prisma 6](https://www.prisma.io/docs/orm/v6/prisma-client/queries/transactions).
 
 Consulta `docs/ARQUITECTURA.md` para el modelo de datos y las rutas, y `docs/ARTE.md` para las imágenes y sus prompts.
+
+## Evaluación académica de calidad
+
+La baseline `baseline-calidad-v1` identifica el commit `afac785407c041abc13f9b8651e70293aae488d4`. La rama `codex/calidad-evaluacion` contiene la evaluación, sus evidencias y la mejora comprobada. Consulta `quality/README.md` para reproducirla con cuentas ficticias y un esquema separado.
+
+Los comandos de desarrollo, compilación y pruebas comprueban si el cliente Prisma ya corresponde al esquema y a la versión instalada. Cuando está vigente, lo reutilizan: esto permite compilar con la API abierta en Windows sin reemplazar un motor bloqueado. Si cambias `schema.prisma`, detén la API antes de ejecutar `npm.cmd run db:generate`; después aplica las migraciones necesarias.
