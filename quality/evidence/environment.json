@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-10T23:25:09.417Z",
+  "baseline": "afac785407c041abc13f9b8651e70293aae488d4",
+  "schema": "neonplay_quality_9a91281a584a",
+  "baseUrl": "http://127.0.0.1:4011",
+  "node": "v22.23.3",
+  "operatingSystem": "win32",
+  "adminEmail": "admin@quality.test",
+  "customerEmail": "player@quality.test",
+  "games": [
+    {
+      "id": "cmv30v1if000ev1r854e8srzk",
+      "name": "Emberfall",
+      "slug": "emberfall",
+      "price": "49.99",
+      "stock": 18,
+      "categoryId": "cmv30v1i30003v1r8s5zri6oe",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i70008v1r8l8r1ipa8",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmv30v1i80009v1r81w4ikez1",
+          "name": "Xbox Series"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1ih000gv1r8jx748qrk",
+      "name": "Velocity 2099",
+      "slug": "velocity-2099",
+      "price": "29.99",
+      "stock": 22,
+      "categoryId": "cmv30v1i30004v1r8rsnp43kv",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i80009v1r81w4ikez1",
+          "name": "Xbox Series"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1ii000iv1r8antraixf",
+      "name": "Titan Protocol",
+      "slug": "titan-protocol",
+      "price": "44.99",
+      "stock": 15,
+      "categoryId": "cmv30v1i10002v1r8pk3378wc",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i70008v1r8l8r1ipa8",
+          "name": "PlayStation 5"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1ij000kv1r8b3aat74u",
+      "name": "Astral Odyssey",
+      "slug": "astral-odyssey",
+      "price": "34.99",
+      "stock": 26,
+      "categoryId": "cmv30v1i40005v1r8boiqgt5z",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i70008v1r8l8r1ipa8",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmv30v1i9000av1r8rmuvgbd8",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1il000mv1r8bzupg8wk",
+      "name": "Echoes of Aether",
+      "slug": "echoes-of-aether",
+      "price": "24.99",
+      "stock": 12,
+      "categoryId": "cmv30v1i30003v1r8s5zri6oe",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i9000av1r8rmuvgbd8",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1im000ov1r8sktkfcnl",
+      "name": "Neon Drift",
+      "slug": "neon-drift",
+      "price": "19.99",
+      "stock": 4,
+      "categoryId": "cmv30v1i30004v1r8rsnp43kv",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i9000av1r8rmuvgbd8",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1in000qv1r86ppqkz0v",
+      "name": "Void Command",
+      "slug": "void-command",
+      "price": "29.99",
+      "stock": 0,
+      "categoryId": "cmv30v1i50006v1r81vrgemou",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        }
+      ]
+    },
+    {
+      "id": "cmv30v1ib000cv1r8ckhyr4mi",
+      "name": "Nexus: Beyond the Void",
+      "slug": "nexus-beyond-the-void",
+      "price": "39.99",
+      "stock": 2,
+      "categoryId": "cmv30v1i10002v1r8pk3378wc",
+      "platforms": [
+        {
+          "id": "cmv30v1i60007v1r83om7b5uv",
+          "name": "PC"
+        },
+        {
+          "id": "cmv30v1i70008v1r8l8r1ipa8",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmv30v1i80009v1r81w4ikez1",
+          "name": "Xbox Series"
+        }
+      ]
+    }
+  ]
+}

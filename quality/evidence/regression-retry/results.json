@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-10T23:34:13.713Z",
+  "browser": "154.0.8037.98",
+  "viewport": "1440x1000",
+  "baselineCommit": "afac785407c041abc13f9b8651e70293aae488d4",
+  "cases": [
+    {
+      "id": "CP09",
+      "flow": "F02",
+      "phase": "regression-retry",
+      "title": "Categoría y plataforma",
+      "data": {
+        "categoryId": "cmv30v1i10002v1r8pk3378wc",
+        "platform": "PC"
+      },
+      "expected": "Todas las tarjetas cumplen ambos filtros",
+      "obtained": {
+        "category": "Acción",
+        "matches": [
+          "Nexus: Beyond the Void",
+          "Titan Protocol"
+        ],
+        "clear": true
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:34:13.713Z",
+      "evidence": "regression-retry/CP09.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "date": "2026-10-10T23:33:52.943Z",
+  "browser": "154.0.8037.98",
+  "viewport": "1440x1000",
+  "baselineCommit": "afac785407c041abc13f9b8651e70293aae488d4",
+  "cases": [
+    {
+      "id": "CP01",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Registro válido",
+      "data": {
+        "email": "qa-regression-1791675226736@quality.test",
+        "passwordLength": 16
+      },
+      "expected": "Cuenta CUSTOMER creada y sesión iniciada",
+      "obtained": "Cuenta creada y perfil autenticado HTTP 200 con rol CUSTOMER.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:46.736Z",
+      "evidence": "regression/CP01.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP02",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Correo inválido",
+      "data": {
+        "email": "correo-invalido"
+      },
+      "expected": "Formulario y servidor rechazan correo inválido",
+      "obtained": {
+        "browser": {
+          "valid": false,
+          "message": "Incluye un signo \"@\" en la dirección de correo electrónico. La dirección \"correo-invalido\" no incluye el signo \"@\"."
+        },
+        "server": {
+          "status": 400,
+          "body": {
+            "message": "email: Invalid email"
+          }
+        }
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:47.294Z",
+      "evidence": "regression/CP02.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP03",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Contraseña de siete caracteres",
+      "data": {
+        "passwordLength": 7
+      },
+      "expected": "Se rechaza contraseña inferior a ocho caracteres",
+      "obtained": {
+        "server": {
+          "status": 400,
+          "body": {
+            "message": "password: String must contain at least 8 character(s)"
+          }
+        },
+        "location": "/register"
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:47.542Z",
+      "evidence": "regression/CP03.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP04",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Correo duplicado",
+      "data": {
+        "email": "qa-regression-1791675226736@quality.test"
+      },
+      "expected": "Conflicto comprensible sin segunda cuenta",
+      "obtained": "Ya existe un registro con ese nombre o correo.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:47.733Z",
+      "evidence": "regression/CP04.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP05",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Inicio y cierre de sesión",
+      "data": {
+        "email": "player@quality.test"
+      },
+      "expected": "Login correcto y sesión revocada al cerrar",
+      "obtained": "Perfil accesible con sesión; después del logout, redirección a login y HTTP 401.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:48.154Z",
+      "evidence": "regression/CP05.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP06",
+      "flow": "F01",
+      "phase": "regression",
+      "title": "Contraseña incorrecta",
+      "data": {
+        "email": "player@quality.test"
+      },
+      "expected": "Mensaje de credenciales inválidas y sin sesión",
+      "obtained": "Correo o contraseña incorrectos.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:48.713Z",
+      "evidence": "regression/CP06.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP07",
+      "flow": "F02",
+      "phase": "regression",
+      "title": "Búsqueda por nombre",
+      "data": {
+        "q": "Nexus"
+      },
+      "expected": "Solo coincidencias con Nexus",
+      "obtained": [
+        "Nexus: Beyond the Void"
+      ],
+      "status": "Pass",
+      "started": "2026-10-10T23:33:49.107Z",
+      "evidence": "regression/CP07.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP08",
+      "flow": "F02",
+      "phase": "regression",
+      "title": "Búsqueda sin resultados",
+      "data": {
+        "q": "zz-no-existe-qa"
+      },
+      "expected": "Estado vacío y recuperación del catálogo",
+      "obtained": "Estado vacío mostrado; se recuperan 8 tarjetas.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:49.393Z",
+      "evidence": "regression/CP08.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP09",
+      "flow": "F02",
+      "phase": "regression",
+      "title": "Categoría y plataforma",
+      "data": {
+        "categoryId": "cmv30v1i10002v1r8pk3378wc",
+        "platform": "PC"
+      },
+      "expected": "Todas las tarjetas cumplen ambos filtros",
+      "obtained": "locator.check: Clicking the checkbox did not change its state\nCall log:\n\u001b[2m  - waiting for getByRole('radio', { name: 'Acción', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"radio\" name=\"category\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\u001b[2m    - click action done\u001b[22m\n\u001b[2m    - waiting for scheduled navigations to finish\u001b[22m\n\u001b[2m    - navigations have finished\u001b[22m\n",
+      "status": "Fail",
+      "started": "2026-10-10T23:33:49.715Z",
+      "evidence": "regression/CP09.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP10",
+      "flow": "F02",
+      "phase": "regression",
+      "title": "Ordenamiento de precios",
+      "data": {
+        "sort": [
+          "price-asc",
+          "price-desc"
+        ]
+      },
+      "expected": "Precios ordenados en ambos sentidos",
+      "obtained": {
+        "price-asc": [
+          19.99,
+          24.99,
+          29.99,
+          29.99,
+          34.99,
+          39.99,
+          44.99,
+          49.99
+        ],
+        "price-desc": [
+          49.99,
+          44.99,
+          39.99,
+          34.99,
+          29.99,
+          29.99,
+          24.99,
+          19.99
+        ]
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:49.929Z",
+      "evidence": "regression/CP10.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP11",
+      "flow": "F02",
+      "phase": "regression",
+      "title": "Detalle válido e inexistente",
+      "data": {
+        "slug": "nexus-beyond-the-void",
+        "invalidSlug": "inexistente-qa"
+      },
+      "expected": "Detalle correcto y error comprensible HTTP 404",
+      "obtained": "Detalle con nombre, precio y stock; ruta inexistente informa indisponibilidad y HTTP 404.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:50.227Z",
+      "evidence": "regression/CP11.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP12",
+      "flow": "F03",
+      "phase": "regression",
+      "title": "Cantidad mínima y total",
+      "data": {
+        "game": "Nexus: Beyond the Void",
+        "price": 39.99,
+        "stock": 2
+      },
+      "expected": "Cantidad 1 y total USD 39,99",
+      "obtained": {
+        "quantity": 1,
+        "total": "$39.99"
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:50.468Z",
+      "evidence": "regression/CP12.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP13",
+      "flow": "F03",
+      "phase": "regression",
+      "title": "Límite de cantidad por stock",
+      "data": {
+        "stock": 2
+      },
+      "expected": "Se mantiene cantidad máxima de 2",
+      "obtained": {
+        "quantity": 2,
+        "total": "$79.98"
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:50.737Z",
+      "evidence": "regression/CP13.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP14",
+      "flow": "F03",
+      "phase": "regression",
+      "title": "Persistencia y eliminación",
+      "data": {
+        "quantity": 2
+      },
+      "expected": "Carrito persiste y queda vacío al eliminar",
+      "obtained": "Recarga conserva dos unidades; eliminar muestra el estado vacío.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:50.825Z",
+      "evidence": "regression/CP14.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP15",
+      "flow": "F04",
+      "phase": "regression",
+      "title": "Compra e historial",
+      "data": {
+        "price": 39.99,
+        "quantity": 1,
+        "initialStock": 2
+      },
+      "expected": "Pedido de USD 39,99, precio conservado y stock 1",
+      "obtained": {
+        "orderId": "cmv31689s0013v1ngeu43hiqy",
+        "total": "39.99",
+        "priceSnapshot": "39.99",
+        "stock": 1
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:50.908Z",
+      "evidence": "regression/CP15.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP16",
+      "flow": "F04",
+      "phase": "regression",
+      "title": "Producto agotado",
+      "data": {
+        "game": "Void Command",
+        "stock": 0
+      },
+      "expected": "No se agrega ni compra sin stock",
+      "obtained": {
+        "status": 409,
+        "body": {
+          "message": "Stock insuficiente para Void Command."
+        }
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:51.376Z",
+      "evidence": "regression/CP16.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP17",
+      "flow": "F05",
+      "phase": "regression",
+      "title": "CRUD completo sin pedidos",
+      "data": {
+        "name": "Juego QA regression",
+        "price": 29.99,
+        "newPrice": 31.99
+      },
+      "expected": "Crear, consultar, editar y eliminar con confirmación",
+      "obtained": {
+        "created": true,
+        "read": true,
+        "updatedPrice": 31.99,
+        "deleted": true
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:51.894Z",
+      "evidence": "regression/CP17.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP18",
+      "flow": "F05",
+      "phase": "regression",
+      "title": "Precio y stock inválidos",
+      "data": {
+        "price": 0,
+        "stock": -1
+      },
+      "expected": "Formulario y servidor impiden guardar",
+      "obtained": {
+        "browserValid": false,
+        "server": {
+          "status": 400,
+          "body": {
+            "message": "price: Number must be greater than or equal to 0.01 · stock: Number must be greater than or equal to 0"
+          }
+        }
+      },
+      "status": "Pass",
+      "started": "2026-10-10T23:33:52.467Z",
+      "evidence": "regression/CP18.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP19",
+      "flow": "F05",
+      "phase": "regression",
+      "title": "Archivado y restauración",
+      "data": {
+        "game": "Nexus: Beyond the Void",
+        "hasOrder": true
+      },
+      "expected": "Archivar conserva historial y restaurar devuelve producto",
+      "obtained": "Producto archivado HTTP 404, pedido conservado con precio 39,99 y restauración HTTP 200.",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:52.640Z",
+      "evidence": "regression/CP19.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    },
+    {
+      "id": "CP20",
+      "flow": "F05",
+      "phase": "regression",
+      "title": "Permisos administrativos",
+      "data": {
+        "roles": [
+          "CUSTOMER",
+          "anonymous"
+        ]
+      },
+      "expected": "Cliente HTTP 403 y anónimo HTTP 401 sin operaciones administrativas",
+      "obtained": "Cliente sin permisos ve acceso restringido (403); anónimo va a login (401).",
+      "status": "Pass",
+      "started": "2026-10-10T23:33:52.943Z",
+      "evidence": "regression/CP20.png",
+      "executor": "Ejecución automatizada Playwright sobre interfaz y API local"
+    }
+  ]
+}

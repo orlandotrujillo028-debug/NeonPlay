@@ -1,0 +1,3 @@
+﻿id,tipo,severidad,atributo,evidencia,estado,accion,cierre
+D01,Defecto de compilación,Media,Mantenibilidad y reproducibilidad,baseline-build.txt; improvement-build.txt,Cerrado,Reutilizar Prisma vigente,Build exit 0 con API abierta y regresión crítica Pass
+O01,Observación de interacción declarada,Prioridad media; no defecto funcional confirmado,Capacidad de interacción,interaccion.csv; respuestas del participante,Abierto,Observar compra e historial y probar orientación contextual,Piloto repetido ≥80% sin ayuda y causas documentadas

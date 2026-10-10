@@ -1,0 +1,60 @@
+{
+  "participant": "P01",
+  "method": "Autorreporte escrito en la conversación; sin observación ni cronometraje",
+  "attempted": 5,
+  "completedWithoutHelp": 3,
+  "neededHelp": [
+    4,
+    5
+  ],
+  "ratePercent": 60,
+  "criterionPercent": 80,
+  "conclusion": "No cumple el criterio en este piloto",
+  "directStatements": [
+    "1 , 2 , 3",
+    "Las intenté y necesité ayuda"
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "description": "Buscar un videojuego",
+      "attempted": true,
+      "withoutHelp": true,
+      "completed": true
+    },
+    {
+      "id": 2,
+      "description": "Filtrar por plataforma",
+      "attempted": true,
+      "withoutHelp": true,
+      "completed": true
+    },
+    {
+      "id": 3,
+      "description": "Agregar al carrito y cambiar cantidad",
+      "attempted": true,
+      "withoutHelp": true,
+      "completed": true
+    },
+    {
+      "id": 4,
+      "description": "Completar compra de demostración",
+      "attempted": true,
+      "withoutHelp": false,
+      "completed": null
+    },
+    {
+      "id": 5,
+      "description": "Encontrar el pedido en el historial",
+      "attempted": true,
+      "withoutHelp": false,
+      "completed": null
+    }
+  ],
+  "limitations": [
+    "Una persona familiarizada con el proyecto",
+    "Sin tiempos",
+    "No se confirmó la finalización de las tareas asistidas",
+    "No se determinó la causa de necesitar ayuda"
+  ]
+}

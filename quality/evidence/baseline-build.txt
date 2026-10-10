@@ -1,0 +1,24 @@
+
+> neonplay@1.0.0 build
+> npm run build -w server && npm run build -w client
+
+
+> @neonplay/server@1.0.0 prebuild
+> prisma generate
+
+warn The configuration property `package.json#prisma` is deprecated and will be removed in Prisma 7. Please migrate to a Prisma config file (e.g., `prisma.config.ts`).
+For more information, see: https://pris.ly/prisma-config
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Error: 
+EPERM: operation not permitted, rename 'C:\Users\LENOVO-LEGION\Documents\ChatGPT\ORLANDO TRUJILLO\NeonPlay\node_modules\.prisma\client\query_engine-windows.dll.node.tmp35140' -> 'C:\Users\LENOVO-LEGION\Documents\ChatGPT\ORLANDO TRUJILLO\NeonPlay\node_modules\.prisma\client\query_engine-windows.dll.node'
+
+
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path C:\Users\LENOVO-LEGION\Documents\ChatGPT\ORLANDO TRUJILLO\NeonPlay\server
+npm error workspace @neonplay/server@1.0.0
+npm error location C:\Users\LENOVO-LEGION\Documents\ChatGPT\ORLANDO TRUJILLO\NeonPlay\server
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c prisma generate
