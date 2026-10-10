@@ -1,0 +1,10 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "editor.formatOnSave": true,
+    "files.exclude": { "**/node_modules": true, "**/.local-data": true },
+  },
+  "extensions": {
+    "recommendations": ["Prisma.prisma", "bradlc.vscode-tailwindcss", "esbenp.prettier-vscode"],
+  },
+}

@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+dist/
+.env
+.env.*
+!.env.example
+.local-data/
+.local-login.txt
+*.log
+.pg-password
+coverage/
+*.tsbuildinfo
+test-results/
+playwright-report/
+.DS_Store

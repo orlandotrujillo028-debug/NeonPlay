@@ -1,0 +1,8 @@
+node_modules
+dist
+.npm-cache
+server/.local-data
+server/.env
+client/.env
+*.log
+*.tsbuildinfo
