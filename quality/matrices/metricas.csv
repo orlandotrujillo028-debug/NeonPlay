@@ -1,5 +1,5 @@
-﻿atributo,resultado,criterio,conclusion
-Adecuación funcional,20 / 20 × 100 = 100%; 5 / 5 flujos = 100%,≥ 95%; cinco flujos y cero críticos,Cumple el alcance probado
-Eficiencia de desempeño,Mediana 3.60 ms; p95 4.45 ms,Mediana ≤ 300 ms; p95 ≤ 500 ms,Cumple en ejecución local
-Capacidad de interacción,3 / 5 × 100 = 60%; piloto P01,≥ 80% sin ayuda,No cumple en este piloto
-Fiabilidad,30 / 30 × 100 = 100% respuestas correctas,30 respuestas correctas de 30,Cumple en la muestra
+﻿atributo,metrica,resultado,criterio,conclusion
+Adecuación funcional,Casos Pass / casos ejecutados × 100; flujos cubiertos / flujos definidos × 100,20 / 20 × 100 = 100%; 5 / 5 flujos = 100%,≥ 95%; cinco flujos y cero críticos,Cumple el alcance probado
+Eficiencia de desempeño,"Mediana y percentil 95 del tiempo HTTP, incluida la validación JSON",Mediana 3.60 ms; p95 4.45 ms,Mediana ≤ 300 ms; p95 ≤ 500 ms,Cumple en ejecución local
+Capacidad de interacción,Tareas completadas sin ayuda / tareas intentadas × 100,3 / 5 × 100 = 60%; piloto P01,≥ 80% sin ayuda,No cumple en este piloto
+Fiabilidad,Respuestas correctas / consultas medidas × 100,30 / 30 × 100 = 100% respuestas correctas,30 respuestas correctas de 30,Cumple en la muestra
