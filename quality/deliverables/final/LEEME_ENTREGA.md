@@ -4,12 +4,14 @@ Trabajo final de Calidad de Software. Integrantes: Kevin Adrián Quiñonez Rocha
 
 ## Archivos para entregar
 
-- `Informe_final_NeonPlay.docx`: informe editable de 32 páginas. Incluye índice con páginas comprobadas, objetivos, metodología, criterios, resultados, discusión, plan de mejora, conclusiones, bibliografía y anexos con veinte casos y seis capturas.
+- `Informe_final_NeonPlay_redaccion_revisada.docx`: informe editable de 32 páginas. Incluye índice con páginas comprobadas, objetivos, metodología, criterios, resultados, discusión, plan de mejora, conclusiones, bibliografía y anexos con veinte casos y seis capturas.
 - `Presentacion_final_NeonPlay.pptx`: veinte diapositivas editables basadas en la plantilla institucional. Las notas del orador contienen el guion de dieciocho minutos y dos minutos para preguntas. En PowerPoint, abre Vista → Página de notas o usa la vista Moderador para consultarlas.
 - `Anexos_finales_NeonPlay.zip`: seis matrices CSV, capturas y registros originales, scripts de reproducción e instrucciones. No incluye datos físicos de PostgreSQL.
 - `matrices`: copia de los CSV sin comprimir. En Excel, usa Datos → Desde texto/CSV, codificación UTF-8 y delimitador coma.
 
 Esta entrega conserva los logotipos, fondos, cabecera, pie, márgenes y formato institucional de las plantillas suministradas. Los archivos originales de las plantillas permanecen intactos. El informe usa Arial 12 negro; la presentación mantiene sus fuentes institucionales y contiene tablas y un gráfico nativos.
+
+La redacción del informe se revisó el 11/10/2026. Se conservaron la plantilla y los resultados de la evaluación del 10/10/2026.
 
 ## Lectura de los resultados
 

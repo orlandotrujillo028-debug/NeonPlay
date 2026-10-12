@@ -13,7 +13,7 @@ Actividad de Calidad de Software, Desarrollo de Software nivel 4. Integrantes: K
 - Piloto P01 por autorreporte: cinco tareas intentadas, tres sin ayuda (60%). Necesitó ayuda en compra e historial. No se confirmaron tiempos ni finalización de las tareas asistidas.
 - D01, build con motor Prisma bloqueado en Windows: cerrado. O01, interacción de compra e historial: pendiente de investigar.
 
-La entrega definitiva está en `deliverables/final`: informe Word de 32 páginas y presentación de 20 diapositivas. Las notas del PowerPoint incluyen el guion de 18 minutos y dos minutos para preguntas. Los archivos de la primera versión se conservan en `deliverables` como referencia; para entregar usa los de `final`. `matrices` conserva los CSV UTF-8 con BOM, legibles en Excel; `evidence` contiene los resultados y capturas originales. Las credenciales de prueba son exclusivamente ficticias, sin relación con las cuentas habituales.
+La entrega definitiva está en `deliverables/final`: informe Word de 32 páginas y presentación de 20 diapositivas. El informe vigente es `Informe_final_NeonPlay_redaccion_revisada.docx`, revisado el 11/10/2026. Las notas del PowerPoint incluyen el guion de 18 minutos y dos minutos para preguntas. Los archivos de la primera versión se conservan en `deliverables` como referencia; para entregar usa los de `final`. `matrices` conserva los CSV UTF-8 con BOM, legibles en Excel; `evidence` contiene los resultados y capturas originales. Las credenciales de prueba son exclusivamente ficticias, sin relación con las cuentas habituales.
 
 ## Repetir la evaluación de la versión mejorada
 
