@@ -240,6 +240,51 @@ describe('API conectada a PostgreSQL', () => {
     await checkout([{ ...line(g), expectedPrice: 0.01 }]).expect(409);
     expect((await db.game.findUniqueOrThrow({ where: { id: g.id } })).stock).toBe(3);
   });
+  it.each(['quantity', 'price', 'platform', 'game'] as const)(
+    'rechaza reutilizar una clave de compra si cambia %s',
+    async (change) => {
+      const g = await game(5, 19.99, true),
+        other = await game(5),
+        key = randomUUID();
+      const original = await checkout([line(g)], key).expect(201);
+      const changed =
+        change === 'quantity'
+          ? line(g, 2)
+          : change === 'price'
+            ? { ...line(g), expectedPrice: 29.99 }
+            : change === 'platform'
+              ? line(g, 1, secondPlatformId)
+              : line(other);
+      await checkout([changed], key).expect(409);
+      expect((await db.game.findUniqueOrThrow({ where: { id: g.id } })).stock).toBe(4);
+      expect((await db.game.findUniqueOrThrow({ where: { id: other.id } })).stock).toBe(5);
+      expect(await db.order.count({ where: { userId: customerId, idempotencyKey: key } })).toBe(1);
+      expect(
+        (await db.order.findUniqueOrThrow({ where: { id: original.body.id } })).total.toNumber(),
+      ).toBe(19.99);
+    },
+  );
+  it('reconoce el mismo carrito aunque se reordenen o agrupen sus líneas', async () => {
+    const a = await game(5),
+      b = await game(5),
+      key = randomUUID();
+    const original = await checkout([line(a, 2), line(b)], key).expect(201);
+    const replay = await checkout([line(b), line(a), line(a)], key).expect(200);
+    expect(replay.body.id).toBe(original.body.id);
+    expect((await db.game.findUniqueOrThrow({ where: { id: a.id } })).stock).toBe(3);
+    expect((await db.game.findUniqueOrThrow({ where: { id: b.id } })).stock).toBe(4);
+  });
+  it('resuelve compras simultáneas con una misma clave y carritos distintos sin confirmar el incorrecto', async () => {
+    const g = await game(5),
+      key = randomUUID();
+    const responses = await Promise.all([checkout([line(g)], key), checkout([line(g, 2)], key)]);
+    expect(responses.map((r) => r.status).sort()).toEqual([201, 409]);
+    const order = responses.find((r) => r.status === 201)!.body;
+    expect((await db.game.findUniqueOrThrow({ where: { id: g.id } })).stock).toBe(
+      5 - order.items[0].quantity,
+    );
+    expect(await db.order.count({ where: { userId: customerId, idempotencyKey: key } })).toBe(1);
+  });
   it('cancelar varias veces devuelve el stock una sola vez', async () => {
     const g = await game(5),
       order = await checkout([line(g, 2)]).expect(201);

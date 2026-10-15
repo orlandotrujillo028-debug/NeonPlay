@@ -4,6 +4,27 @@ import { db } from '../db.js';
 import { auth, ApiError, checkoutSchema, transaction, gameInclude, orderInclude } from '../lib.js';
 
 export const ordersRouter = Router();
+type CheckoutLine = ReturnType<typeof checkoutSchema.parse>['items'][number];
+type SavedOrder = Prisma.OrderGetPayload<{ include: typeof orderInclude }>;
+
+function replayOrder(order: SavedOrder, items: CheckoutLine[]) {
+  const savedItems = new Map(
+    order.items.map((item) => [item.gameId + ':' + item.platformId, item]),
+  );
+  const matches =
+    order.items.length === items.length &&
+    items.every((item) => {
+      const saved = savedItems.get(item.gameId + ':' + item.platformId);
+      return saved && saved.quantity === item.quantity && saved.price.equals(item.expectedPrice);
+    });
+  if (!matches)
+    throw new ApiError(
+      409,
+      'Esta solicitud de compra ya se utilizó con un carrito diferente. Revisa tus pedidos antes de volver a comprar.',
+    );
+  return order;
+}
+
 ordersRouter.use(auth);
 ordersRouter.get('/', async (req, res) =>
   res.json(
@@ -17,11 +38,6 @@ ordersRouter.get('/', async (req, res) =>
 ordersRouter.post('/', async (req, res) => {
   const data = checkoutSchema.parse(req.body),
     userId = req.user!.id;
-  const existing = await db.order.findUnique({
-    where: { userId_idempotencyKey: { userId, idempotencyKey: data.idempotencyKey } },
-    include: orderInclude,
-  });
-  if (existing) return res.json(existing);
   const variants = new Map<string, (typeof data.items)[number]>();
   for (const item of data.items) {
     const key = item.gameId + ':' + item.platformId;
@@ -35,13 +51,18 @@ ordersRouter.post('/', async (req, res) => {
     throw new ApiError(400, 'Puedes comprar hasta 99 unidades por videojuego y plataforma.');
   const demand = new Map<string, number>();
   for (const item of items) demand.set(item.gameId, (demand.get(item.gameId) || 0) + item.quantity);
+  const existing = await db.order.findUnique({
+    where: { userId_idempotencyKey: { userId, idempotencyKey: data.idempotencyKey } },
+    include: orderInclude,
+  });
+  if (existing) return res.json(replayOrder(existing, items));
   try {
     const order = await transaction(async (tx) => {
       const previous = await tx.order.findUnique({
         where: { userId_idempotencyKey: { userId, idempotencyKey: data.idempotencyKey } },
         include: orderInclude,
       });
-      if (previous) return previous;
+      if (previous) return replayOrder(previous, items);
       const games = await tx.game.findMany({
         where: { id: { in: [...demand.keys()] }, archived: false },
         include: gameInclude,
@@ -99,7 +120,7 @@ ordersRouter.post('/', async (req, res) => {
         where: { userId_idempotencyKey: { userId, idempotencyKey: data.idempotencyKey } },
         include: orderInclude,
       });
-      if (previous) return res.json(previous);
+      if (previous) return res.json(replayOrder(previous, items));
     }
     throw error;
   }

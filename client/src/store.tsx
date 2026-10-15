@@ -1,4 +1,13 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type Dispatch,
+  type SetStateAction,
+} from 'react';
 import type { CartItem, Game, User } from './types';
 import { api, cartKey, readCart } from './lib';
 
@@ -12,7 +21,7 @@ type Store = {
   changeQuantity: (key: string, quantity: number) => void;
   remove: (key: string) => void;
   clearCart: () => void;
-  setCart: (cart: CartItem[]) => void;
+  setCart: Dispatch<SetStateAction<CartItem[]>>;
   notify: (message: string, error?: boolean) => void;
 };
 const Context = createContext<Store | null>(null);
@@ -24,7 +33,7 @@ export const useStore = () => {
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null),
     [authReady, setAuthReady] = useState(false);
-  const [cart, setCart] = useState<CartItem[]>(() => {
+  const [cart, setCartState] = useState<CartItem[]>(() => {
     try {
       return readCart(localStorage.getItem('neonplay-cart-v1'));
     } catch {
@@ -34,7 +43,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [toast, setToast] = useState<{ message: string; error: boolean } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cartRef = useRef(cart);
-  cartRef.current = cart;
+  function setCart(next: SetStateAction<CartItem[]>) {
+    const updated = typeof next === 'function' ? next(cartRef.current) : next;
+    cartRef.current = updated;
+    setCartState(updated);
+  }
   useEffect(() => {
     const controller = new AbortController();
     api<User>('/auth/me', { signal: controller.signal })
@@ -83,7 +96,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       quantity: (old?.quantity || 0) + 1,
     };
     const next = old ? current.map((i) => (cartKey(i) === key ? item : i)) : [...current, item];
-    cartRef.current = next;
     setCart(next);
     notify(`${game.name} añadido al carrito.`);
   }
@@ -101,7 +113,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     )
       return notify('La cantidad supera el stock disponible.', true);
     const next = current.map((i) => (cartKey(i) === key ? { ...i, quantity } : i));
-    cartRef.current = next;
     setCart(next);
   }
   async function logout() {
