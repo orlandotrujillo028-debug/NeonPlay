@@ -1,0 +1,38 @@
+
+> neonplay@1.0.0 test
+> npm run test -w server && npm run test -w client
+
+
+> @neonplay/server@1.0.0 pretest
+> node ../scripts/ensure-prisma-client.mjs
+
+Cliente Prisma vigente; se reutiliza sin reemplazar su motor.
+
+> @neonplay/server@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/LENOVO-LEGION/Documents/ChatGPT/ORLANDO TRUJILLO/NeonPlay/server
+
+ ✓ tests/api.test.ts (20 tests) 3190ms
+   ✓ API conectada a PostgreSQL > bloquea correos duplicados y credenciales incorrectas  385ms
+
+ Test Files  1 passed (1)
+      Tests  20 passed (20)
+   Start at  18:33:15
+   Duration  3.75s (transform 100ms, setup 0ms, collect 149ms, tests 3.19s, environment 0ms, prepare 95ms)
+
+
+> @neonplay/client@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/LENOVO-LEGION/Documents/ChatGPT/ORLANDO TRUJILLO/NeonPlay/client
+
+ ✓ src/lib.test.ts (6 tests) 14ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  18:33:20
+   Duration  440ms (transform 41ms, setup 0ms, collect 43ms, tests 14ms, environment 0ms, prepare 87ms)
+

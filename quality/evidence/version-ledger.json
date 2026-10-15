@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "afac785407c041abc13f9b8651e70293aae488d4",
+  "baselineTag": "baseline-calidad-v1",
+  "improvementCommit": "f6c1a4c1db8af32cbd3311ec4c6fe2d20d9caa14",
+  "deliveryBranch": "codex/calidad-evaluacion",
+  "businessCodePaths": [
+    "client/src",
+    "server/src",
+    "server/prisma"
+  ],
+  "businessCodeDiff": [],
+  "verification": "git diff --name-only baseline improvement -- client/src server/src server/prisma",
+  "acceptedBaseline": "baseline/results.json",
+  "regressionFirstAttempt": "regression/results.json",
+  "regressionFilterRetry": "regression-retry/results.json",
+  "instrumentationPreparation": "instrumentacion-01/results.json",
+  "note": "La matriz de regresión conserva el último resultado de cada caso. Los intentos originales no se sustituyen."
+}

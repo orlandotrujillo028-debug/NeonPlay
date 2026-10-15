@@ -24,6 +24,15 @@ import { api, ApiError, cartKey, cartTotal, date, errorMessage, money } from '..
 import type { Game, Order, User } from '../types';
 import { useApi } from '../hooks';
 import { Empty, ErrorState, GameImage, Loading, StatusBadge } from '../components';
+import { reconcileCart } from '../cart';
+import {
+  checkoutItems,
+  prepareCheckoutAttempt,
+  loadCheckoutAttempt,
+  saveCheckoutAttempt,
+  clearCheckoutAttempt,
+  type CheckoutAttempt,
+} from '../checkout';
 
 export function AuthPage({ register = false }: { register?: boolean }) {
   const { user, setUser, notify, authReady } = useStore(),
@@ -169,9 +178,10 @@ export function CartPage() {
   const [busy, setBusy] = useState(false),
     [refreshing, setRefreshing] = useState(false),
     [error, setError] = useState('');
-  const checkoutKey = useRef(crypto.randomUUID());
+  const checkoutAttempt = useRef<CheckoutAttempt | null>(null);
+  const refreshController = useRef<AbortController | null>(null);
+  useEffect(() => () => refreshController.current?.abort(), []);
   useEffect(() => {
-    checkoutKey.current = crypto.randomUUID();
     setError('');
   }, [cart]);
   const total = cartTotal(cart);
@@ -179,6 +189,9 @@ export function CartPage() {
     (i) => cart.filter((c) => c.gameId === i.gameId).reduce((s, c) => s + c.quantity, 0) > i.stock,
   );
   async function refresh() {
+    refreshController.current?.abort();
+    const controller = new AbortController();
+    refreshController.current = controller;
     setRefreshing(true);
     setError('');
     try {
@@ -186,32 +199,21 @@ export function CartPage() {
       const results = await Promise.all(
         slugs.map(async (slug) => {
           try {
-            return { slug, game: await api<Game>('/games/' + slug) };
+            return { slug, game: await api<Game>('/games/' + slug, { signal: controller.signal }) };
           } catch (e) {
             if (e instanceof ApiError && e.status === 404) return { slug, game: null };
             throw e;
           }
         }),
       );
-      setCart(
-        cart.map((item) => {
-          const game = results.find((r) => r.slug === item.slug)?.game;
-          return game && game.platforms.some((p) => p.platformId === item.platformId)
-            ? {
-                ...item,
-                name: game.name,
-                image: game.image,
-                price: Number(game.price),
-                stock: game.stock,
-              }
-            : { ...item, stock: 0 };
-        }),
-      );
+      if (controller.signal.aborted) return;
+      const games = new Map(results.map((result) => [result.slug, result.game]));
+      setCart((current) => reconcileCart(current, games));
       notify('Precios y disponibilidad actualizados.');
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setRefreshing(false);
+      if (!controller.signal.aborted) setRefreshing(false);
     }
   }
   async function checkout() {
@@ -219,18 +221,22 @@ export function CartPage() {
     setBusy(true);
     setError('');
     try {
+      const attempt = prepareCheckoutAttempt(
+        user.id,
+        cart,
+        checkoutAttempt.current || loadCheckoutAttempt(),
+      );
+      checkoutAttempt.current = attempt;
+      saveCheckoutAttempt(attempt);
       const order = await api<Order>('/orders', {
         method: 'POST',
         body: JSON.stringify({
-          idempotencyKey: checkoutKey.current,
-          items: cart.map((i) => ({
-            gameId: i.gameId,
-            platformId: i.platformId,
-            quantity: i.quantity,
-            expectedPrice: i.price,
-          })),
+          idempotencyKey: attempt.key,
+          items: checkoutItems(cart),
         }),
       });
+      clearCheckoutAttempt(attempt.key);
+      checkoutAttempt.current = null;
       clearCart();
       notify('Compra de demostración completada.');
       navigate('/orders?success=' + order.id);

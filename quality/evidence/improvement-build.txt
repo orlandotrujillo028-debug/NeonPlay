@@ -1,0 +1,26 @@
+
+> neonplay@1.0.0 build
+> npm run build -w server && npm run build -w client
+
+
+> @neonplay/server@1.0.0 prebuild
+> node ../scripts/ensure-prisma-client.mjs
+
+Cliente Prisma vigente; se reutiliza sin reemplazar su motor.
+
+> @neonplay/server@1.0.0 build
+> tsc
+
+
+> @neonplay/client@1.0.0 build
+> tsc -b && vite build
+
+vite v7.1.7 building for production...
+transforming...
+✓ 1690 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.71 kB │ gzip:  0.42 kB
+dist/assets/index-BF7SECNi.css   49.20 kB │ gzip: 11.44 kB
+dist/assets/index-BfasMoxF.js   295.19 kB │ gzip: 90.37 kB
+✓ built in 1.59s

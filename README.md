@@ -101,7 +101,9 @@ Las rutas de administración comprueban tanto la sesión como el rol en el servi
 
 El servidor recalcula el importe con `Decimal` usando los precios de PostgreSQL, valida la plataforma y compara los precios que el cliente vio. Si cambió un precio, solicita actualizar el carrito.
 
-La compra utiliza una transacción serializable con reintentos ante conflictos. Agrupa cantidades del mismo juego entre plataformas y descuenta stock mediante una actualización condicional. Si una línea falla, se revierte toda la transacción. Una clave de idempotencia única por cliente evita duplicar pedidos al repetir una solicitud. Cancelar devuelve stock una sola vez.
+La compra utiliza una transacción serializable con reintentos ante conflictos. Agrupa cantidades del mismo juego entre plataformas y descuenta stock mediante una actualización condicional. Si una línea falla, se revierte toda la transacción. Una clave de idempotencia única por cliente evita duplicar pedidos al repetir una solicitud. La API comprueba que la clave corresponda a los mismos juegos, plataformas, cantidades y precios; si el carrito es diferente, responde con HTTP 409. Cancelar devuelve stock una sola vez.
+
+El navegador conserva el intento pendiente en `sessionStorage` hasta recibir la confirmación. Recargar la página, cambiar de pantalla o actualizar nombres, imágenes o stock no genera otra solicitud de compra si el contenido sigue siendo el mismo. Cambiar de cuenta o modificar juegos, plataformas, cantidades o precios inicia otro intento. Si el navegador bloquea el almacenamiento, los reintentos conservan la clave en memoria mientras la página siga abierta; en ese caso una recarga pierde ese respaldo. Las consultas de precios se cancelan al abandonar el carrito y combinan sus resultados con el estado actual para respetar artículos añadidos, eliminados o modificados durante la consulta.
 
 Cada línea del pedido guarda nombre, imagen, plataforma y precio de compra. Las modificaciones del catálogo no alteran ese historial. PostgreSQL también tiene restricciones para impedir stock negativo, importes inválidos y cantidades fuera del rango permitido.
 
@@ -146,7 +148,7 @@ NeonPlay/
 
 ## Verificación
 
-Se verificaron la compilación de frontend y backend y **26 pruebas automáticas**: 20 de API sobre PostgreSQL real y 6 de carrito/fechas. Las pruebas de API crean un esquema aleatorio `neonplay_test_<identificador>` y eliminan únicamente ese esquema al terminar. Necesitan la base iniciada y permisos para crear esquemas. No alteran el catálogo de `public`.
+Se verificaron la compilación de frontend y backend y **52 pruebas automáticas**: 26 de API sobre PostgreSQL real y 26 de carrito, reintentos y fechas. Las pruebas de API crean un esquema aleatorio `neonplay_test_<identificador>` y eliminan únicamente ese esquema al terminar. Necesitan la base iniciada y permisos para crear esquemas. No alteran el catálogo de `public`. Las correcciones y regresiones añadidas el 15/10/2026 están documentadas en `docs/CORRECCIONES_2026-10-15.md`; las evidencias de la evaluación académica anterior se conservan con sus resultados originales.
 
 En navegador se verificaron login de cliente y administrador, añadir al carrito, cantidades, checkout, historial, dashboard, edición administrativa, filtros, orden por precio, menú móvil, carga de las imágenes y ausencia de desbordamiento horizontal en las pantallas revisadas. Se revisaron los tamaños 1440×1000 y 390×844. Las capturas están en `docs/`.
 
@@ -159,3 +161,9 @@ Esta entrega está preparada para desarrollo local en VS Code. Pasarela de pago,
 Referencias oficiales de implementación: [Vite](https://vite.dev/guide/), [Tailwind con Vite](https://tailwindcss.com/docs/installation/using-vite), [transacciones de Prisma 6](https://www.prisma.io/docs/orm/v6/prisma-client/queries/transactions).
 
 Consulta `docs/ARQUITECTURA.md` para el modelo de datos y las rutas, y `docs/ARTE.md` para las imágenes y sus prompts.
+
+## Evaluación académica de calidad
+
+La baseline `baseline-calidad-v1` identifica el commit `afac785407c041abc13f9b8651e70293aae488d4`. La rama `codex/calidad-evaluacion` contiene la evaluación, sus evidencias y la mejora comprobada. Consulta `quality/README.md` para reproducirla con cuentas ficticias y un esquema separado.
+
+Los comandos de desarrollo, compilación y pruebas comprueban si el cliente Prisma ya corresponde al esquema y a la versión instalada. Cuando está vigente, lo reutilizan: esto permite compilar con la API abierta en Windows sin reemplazar un motor bloqueado. Si cambias `schema.prisma`, detén la API antes de ejecutar `npm.cmd run db:generate`; después aplica las migraciones necesarias.

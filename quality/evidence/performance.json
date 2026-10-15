@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-10T23:32:31.444Z",
+  "endpoint": "/api/games?limit=12&sort=price-asc",
+  "method": "HTTP secuencial, incluye lectura y validación JSON",
+  "warmup": 5,
+  "intervalMs": 250,
+  "sampleCount": 30,
+  "meanMs": 3.6697333333333337,
+  "medianMs": 3.5965,
+  "p95Ms": 4.452,
+  "minMs": 2.894,
+  "maxMs": 4.62,
+  "correct": 30,
+  "criterion": {
+    "medianMaxMs": 300,
+    "p95MaxMs": 500,
+    "correctRequired": 30
+  },
+  "samples": [
+    {
+      "sample": 1,
+      "ms": 3.173,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 2,
+      "ms": 4.393,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 3,
+      "ms": 4.376,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 4,
+      "ms": 4.62,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 5,
+      "ms": 3.85,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 6,
+      "ms": 3.695,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 7,
+      "ms": 4.016,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 8,
+      "ms": 4.021,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 9,
+      "ms": 3.627,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 10,
+      "ms": 4.41,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 11,
+      "ms": 4.148,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 12,
+      "ms": 3.244,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 13,
+      "ms": 3.016,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 14,
+      "ms": 3.45,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 15,
+      "ms": 3.777,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 16,
+      "ms": 3.542,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 17,
+      "ms": 3.532,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 18,
+      "ms": 2.894,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 19,
+      "ms": 3.743,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 20,
+      "ms": 3.413,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 21,
+      "ms": 3.64,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 22,
+      "ms": 3.403,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 23,
+      "ms": 3.353,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 24,
+      "ms": 4.452,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 25,
+      "ms": 3.391,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 26,
+      "ms": 3.359,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 27,
+      "ms": 3.592,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 28,
+      "ms": 3.601,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 29,
+      "ms": 2.918,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 30,
+      "ms": 3.443,
+      "status": 200,
+      "correct": true
+    }
+  ]
+}
