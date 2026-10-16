@@ -33,12 +33,18 @@ for (const [id, url] of pages) {
   const reports = [];
   for (let i = 1; i <= runs; i++) {
     const file = path.join(out, `${id}-${i}`);
-    const r = spawnSync(
-      process.execPath,
-      [cli, env.baseUrl + url, '--preset=desktop', '--quiet', '--output=json', '--output=html', `--output-path=${file}`,
-        `--only-categories=${categories.join(',')}`, '--chrome-flags=--headless=new --no-sandbox --disable-gpu'],
-      { encoding: 'utf8', windowsHide: true },
-    );
+    // Lighthouse falla a veces al grabar la traza (NO_NAVSTART); se reintenta hasta tres veces.
+    let r;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      r = spawnSync(
+        process.execPath,
+        [cli, env.baseUrl + url, '--preset=desktop', '--quiet', '--output=json', '--output=html', `--output-path=${file}`,
+          `--only-categories=${categories.join(',')}`, '--chrome-flags=--headless=new --no-sandbox --disable-gpu'],
+        { encoding: 'utf8', windowsHide: true },
+      );
+      if (r.status === 0) break;
+      console.error(`Intento ${attempt} fallido en ${url}: ${r.stderr.split('\n')[0]}`);
+    }
     if (r.status !== 0) throw new Error(`Lighthouse falló en ${url}: ${r.stderr}`);
     reports.push(JSON.parse(fs.readFileSync(`${file}.report.json`, 'utf8')));
     fs.rmSync(`${file}.report.json`);

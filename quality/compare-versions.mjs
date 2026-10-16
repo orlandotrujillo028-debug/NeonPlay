@@ -112,6 +112,8 @@ add('Eficiencia de desempeño', 'Catálogo: mediana / p95 (100 consultas, ms)', 
 add('Eficiencia de desempeño', 'Lighthouse: rendimiento (promedio de 4 páginas)', int(A.lh?.average.performance), int(D.lh?.average.performance), '≥ 90 (banda verde de Lighthouse)', `Antes: ${meets(A.lh ? A.lh.average.performance >= 90 : null)}; después: ${meets(D.lh ? D.lh.average.performance >= 90 : null)}`);
 const lcp = (lh) => (lh ? Math.max(...Object.values(lh.pages).map((p) => p.metrics['largest-contentful-paint'])) : null);
 add('Eficiencia de desempeño', 'Lighthouse: LCP de la página más lenta (ms)', int(lcp(A.lh)), int(lcp(D.lh)), '≤ 2.500 ms', `Antes: ${meets(A.lh ? lcp(A.lh) <= 2500 : null)}; después: ${meets(D.lh ? lcp(D.lh) <= 2500 : null)}`);
+const weight = (lh) => (lh ? Math.max(...Object.values(lh.pages).map((p) => p.metrics['total-byte-weight'])) / 1e6 : null);
+add('Eficiencia de desempeño', 'Lighthouse: peso de la página más pesada (MB)', fmt(weight(A.lh), 1), fmt(weight(D.lh), 1), '≤ 3 MB (criterio del equipo)', `Antes: ${meets(A.lh ? weight(A.lh) <= 3 : null)}; después: ${meets(D.lh ? weight(D.lh) <= 3 : null)}`);
 add('Eficiencia de desempeño', 'JavaScript del cliente (kB, sin comprimir / gzip)', `${fmt(A.bundle?.jsBytes / 1000)} / ${fmt(A.bundle?.jsGzipBytes / 1000)}`, `${fmt(D.bundle?.jsBytes / 1000)} / ${fmt(D.bundle?.jsGzipBytes / 1000)}`, 'Archivo ≤ 500 kB (aviso de Vite)', `Antes: ${meets(A.bundle ? !A.bundle.viteWarningOver500Kb : null)}; después: ${meets(D.bundle ? !D.bundle.viteWarningOver500Kb : null)}`);
 
 // Capacidad de interacción

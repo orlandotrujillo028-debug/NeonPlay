@@ -87,7 +87,10 @@ try {
     await customer.goto('/login'); await customer.getByLabel('Correo electrónico',{exact:true}).fill(env.customerEmail); await customer.getByLabel('Contraseña',{exact:true}).fill('Incorrecta123!'); await customer.getByRole('button',{name:'Entrar a NeonPlay',exact:true}).click(); const t=await customer.getByRole('alert').innerText(); assert.match(t,/credencial|incorrect|contraseña/i); assert.equal((await api(customer,'GET','/auth/me')).status,401); return t;
   });
   await caseRun('CP07','F02','Búsqueda por nombre',{q:'Nexus'},'Solo coincidencias con Nexus',anon,async()=>{
-    await anon.goto('/catalog'); await anon.getByLabel('Buscar en catálogo').fill('Nexus'); await anon.getByRole('button',{name:'Aplicar búsqueda'}).click(); await anon.waitForURL('**/catalog?q=Nexus'); await anon.locator('.game-title').first().waitFor(); const titles=await anon.locator('.game-title').allTextContents(); assert(titles.length>0); assert(titles.every(t=>/Nexus/i.test(t))); return titles;
+    await anon.goto('/catalog'); await anon.getByLabel('Buscar en catálogo').fill('Nexus'); await anon.getByRole('button',{name:'Aplicar búsqueda'}).click(); await anon.waitForURL('**/catalog?q=Nexus'); await anon.locator('.game-title').first().waitFor();
+    // Espera a que la lista termine de actualizarse; si nunca coincide, la aserción falla igual.
+    await anon.waitForFunction(()=>{const t=[...document.querySelectorAll('.game-title')].map(e=>e.textContent||'');return t.length>0&&t.every(x=>/Nexus/i.test(x));},null,{timeout:7000}).catch(()=>{});
+    const titles=await anon.locator('.game-title').allTextContents(); assert(titles.length>0); assert(titles.every(t=>/Nexus/i.test(t))); return titles;
   });
   await caseRun('CP08','F02','Búsqueda sin resultados',{q:'zz-no-existe-qa'},'Estado vacío y recuperación del catálogo',anon,async()=>{
     await anon.goto('/catalog?q=zz-no-existe-qa'); await anon.getByText('No encontramos videojuegos',{exact:true}).waitFor(); await anon.getByRole('button',{name:'Limpiar filtros',exact:true}).click(); await anon.locator('.game-title').first().waitFor(); return `Estado vacío mostrado; se recuperan ${await anon.locator('.game-title').count()} tarjetas.`;
