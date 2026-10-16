@@ -4,7 +4,8 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-dotenv.config({path:'server/.env',quiet:true});
+import { root, runDir, versionInfo } from './run-context.mjs';
+dotenv.config({path:path.join(root,'server/.env'),quiet:true});
 const originalUrl = process.env.DATABASE_URL;
 const schema = 'neonplay_quality_' + randomBytes(6).toString('hex');
 const runUrl = new URL(originalUrl);
@@ -17,14 +18,14 @@ process.env.SEED_ADMIN_EMAIL = 'admin@quality.test';
 process.env.SEED_CUSTOMER_EMAIL = 'player@quality.test';
 process.env.SEED_ADMIN_PASSWORD = 'QualityTest!2026';
 process.env.SEED_CUSTOMER_PASSWORD = 'QualityTest!2026';
-const evidenceDir = path.resolve('quality/evidence');
+const evidenceDir = runDir;
 mkdirSync(evidenceDir,{recursive:true});
 for(const args of [
   ['node_modules/prisma/build/index.js','migrate','deploy','--schema','server/prisma/schema.prisma'],
   ['node_modules/tsx/dist/cli.mjs','server/prisma/seed.ts'],
 ]) {
-  const result = spawnSync(process.execPath,args,{env:process.env,encoding:'utf8',windowsHide:true});
-  if(result.status !== 0) { console.error('No se pudo preparar el entorno aislado de evaluación.'); process.exit(1); }
+  const result = spawnSync(process.execPath,args,{cwd:root,env:process.env,encoding:'utf8',windowsHide:true});
+  if(result.status !== 0) { console.error('No se pudo preparar el entorno aislado de evaluación.', result.stderr); process.exit(1); }
 }
 const db = new PrismaClient();
 await db.game.updateMany({where:{slug:'nexus-beyond-the-void'},data:{stock:2}});
@@ -34,8 +35,8 @@ await db.game.update({where:{id:primary.id},data:{stock:2}});
 const empty = games.find(g=>g.name.startsWith('Void'));
 await db.game.update({where:{id:empty.id},data:{stock:0}});
 writeFileSync(path.join(evidenceDir,'environment.json'),JSON.stringify({
-  date:new Date().toISOString(),baseline:spawnSync('git',['rev-parse','baseline-calidad-v1^{}'],{encoding:'utf8'}).stdout.trim(),
-  sourceCommit:spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim(),
+  date:new Date().toISOString(),baseline:'afac785407c041abc13f9b8651e70293aae488d4',
+  sourceCommit:versionInfo.commit,versionLabel:versionInfo.label,
   schema,baseUrl:process.env.CLIENT_URL,node:process.version,
   operatingSystem:process.platform,adminEmail:process.env.SEED_ADMIN_EMAIL,
   customerEmail:process.env.SEED_CUSTOMER_EMAIL,
@@ -45,7 +46,7 @@ await db.$disconnect();
 const {app} = await import('../server/dist/src/app.js');
 const {db:appDb} = await import('../server/dist/src/db.js');
 await appDb.$connect();
-const server = app.listen(4011,'127.0.0.1',()=>console.log('Evaluación aislada disponible en http://127.0.0.1:4011. Consulta environment.json para identificar la versión.'));
+const server = app.listen(4011,'127.0.0.1',()=>console.log(`Evaluación aislada de ${versionInfo.label} disponible en http://127.0.0.1:4011. Evidencias en ${evidenceDir}.`));
 let stopping = false;
 async function stop() {
   if(stopping)return;
@@ -56,6 +57,7 @@ async function stop() {
     if(!/^neonplay_quality_[a-f0-9]{12}$/.test(schema))throw new Error('Esquema temporal inválido.');
     await cleanup.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`);
     await cleanup.$disconnect();
+    writeFileSync(path.join(evidenceDir,'cleanup.json'),JSON.stringify({date:new Date().toISOString(),schema,removed:true,scope:'Solo esquema temporal validado de evaluación'},null,2));
     console.log('Esquema de evaluación retirado; evidencias conservadas.');
     process.exit(0);
   });

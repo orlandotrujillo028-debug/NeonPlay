@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
-import { spawnSync } from 'node:child_process';
+import { runDir, versionInfo } from './run-context.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const phase = process.argv[2] || 'baseline';
@@ -12,10 +12,10 @@ const only = process.argv[3]?.split(',');
 const runtime = process.env.QUALITY_RUNTIME_MODULES;
 if (!runtime) throw new Error('Define QUALITY_RUNTIME_MODULES con la carpeta de paquetes Playwright.');
 const { chromium } = createRequire(path.join(runtime, 'package.json'))('playwright');
-const env = JSON.parse(await fs.readFile(path.join(root, 'quality/evidence/environment.json'), 'utf8'));
-const out = path.join(root, 'quality/evidence', phase);
+const env = JSON.parse(await fs.readFile(path.join(runDir, 'environment.json'), 'utf8'));
+const out = path.join(runDir, phase);
 await fs.mkdir(out, { recursive: true });
-const browser = await chromium.launch({ headless: true, executablePath: process.env.QUALITY_BROWSER || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
+const browser = await chromium.launch({ headless: true, executablePath: process.env.QUALITY_BROWSER || (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : '/usr/bin/google-chrome') });
 const contexts = [];
 async function newPage() {
   const context = await browser.newContext({ baseURL: env.baseUrl, viewport: { width: 1440, height: 1000 }, locale: 'es-EC' });
@@ -30,7 +30,7 @@ const voidGame = env.games.find(g => g.slug === 'void-command');
 const email = `qa-${phase}-${Date.now()}@quality.test`;
 const password = 'QualityTest!2026';
 const rows = [];
-const versionCommit=spawnSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).stdout.trim();
+const versionCommit=versionInfo.commit;
 async function login(page, who) {
   await page.goto('/login');
   await page.getByLabel('Correo electrónico', { exact: true }).fill(who);
@@ -53,11 +53,11 @@ async function caseRun(id, flow, title, data, expected, page, run) {
   const started = new Date().toISOString();
   let obtained, status = 'Pass';
   try { obtained = await run(); } catch (e) { status = 'Fail'; obtained = e.message; }
-  const evidence = `${phase}/${id}.png`;
+  const evidence = `${path.basename(runDir)}/${phase}/${id}.png`;
   await page.screenshot({ path: path.join(out, `${id}.png`), fullPage: true });
   const row = { id, flow, phase, title, data, expected, obtained, status, started, evidence, versionCommit, executor: 'Ejecución automatizada Playwright sobre interfaz y API local' };
   rows.push(row);
-  await fs.writeFile(path.join(out, 'results.json'), JSON.stringify({ date: started, browser: browser.version(), viewport: '1440x1000', baselineCommit: 'afac785407c041abc13f9b8651e70293aae488d4', cases: rows }, null, 2));
+  await fs.writeFile(path.join(out, 'results.json'), JSON.stringify({ date: started, browser: browser.version(), viewport: '1440x1000', commit: versionInfo.commit, versionLabel: versionInfo.label, baselineCommit: 'afac785407c041abc13f9b8651e70293aae488d4', cases: rows }, null, 2));
   console.log(`${id} ${status}: ${typeof obtained === 'string' ? obtained : JSON.stringify(obtained)}`);
 }
 try {

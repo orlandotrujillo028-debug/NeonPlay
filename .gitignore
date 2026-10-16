@@ -13,3 +13,5 @@ coverage/
 test-results/
 playwright-report/
 .DS_Store
+# Los registros de las mediciones son evidencia y sí se versionan.
+!quality/evidence/runs/**/*.log

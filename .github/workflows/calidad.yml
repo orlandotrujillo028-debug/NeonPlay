@@ -1,0 +1,83 @@
+name: Comparación de calidad
+
+# Mide la baseline (afac785) y la versión actual con los mismos instrumentos,
+# en la misma máquina y una después de otra, y genera la matriz antes/después.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['calidad/**']
+    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'docs/**', '**/*.md']
+  pull_request:
+    branches: [main]
+    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'docs/**', '**/*.md']
+
+permissions:
+  contents: read
+
+env:
+  BASELINE: afac785407c041abc13f9b8651e70293aae488d4
+
+jobs:
+  medir:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: neonplay
+          POSTGRES_PASSWORD: neonplay
+          POSTGRES_DB: neonplay
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U neonplay" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://neonplay:neonplay@127.0.0.1:5432/neonplay?schema=public
+      CLIENT_URL: http://localhost:5173
+      NODE_ENV: test
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: actual
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Preparar entorno
+        run: |
+          echo "JWT_SECRET=$(openssl rand -hex 48)" >> "$GITHUB_ENV"
+          SHA=$(git -C actual rev-parse --short HEAD)
+          echo "RUNS=$GITHUB_WORKSPACE/actual/quality/evidence/runs" >> "$GITHUB_ENV"
+          echo "DESPUES=despues-$SHA" >> "$GITHUB_ENV"
+          echo "CRUZADO=cruzado-${BASELINE::7}" >> "$GITHUB_ENV"
+          echo "ANTES=antes-${BASELINE::7}" >> "$GITHUB_ENV"
+          git -C actual worktree add ../antes "$BASELINE"
+          # La baseline no tenía scripts de evaluación: se usan los mismos de la versión actual.
+          cp -r actual/quality antes/quality
+          rm -rf antes/quality/evidence antes/quality/deliverables
+          google-chrome --version
+      - name: Instalar Playwright y Lighthouse fuera del proyecto
+        run: |
+          npm install --prefix "$RUNNER_TEMP/qa-tools" --no-audit --no-fund playwright@1.62.1 lighthouse@12
+          echo "QUALITY_RUNTIME_MODULES=$RUNNER_TEMP/qa-tools/node_modules" >> "$GITHUB_ENV"
+      - name: Medir la baseline
+        run: bash actual/quality/ci/medir-version.sh antes antes "$RUNS/$ANTES"
+      - name: Pruebas actuales sobre el código de la baseline
+        run: bash actual/quality/ci/pruebas-cruzadas.sh antes actual "$RUNS/$CRUZADO"
+      - name: Medir la versión actual
+        run: bash actual/quality/ci/medir-version.sh actual despues "$RUNS/$DESPUES"
+      - name: Generar la matriz antes/después
+        run: |
+          cd actual
+          node quality/compare-versions.mjs "$RUNS/$ANTES" "$RUNS/$DESPUES" "$RUNS/$CRUZADO" quality/comparacion
+          cat quality/comparacion/comparacion.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: comparacion-calidad
+          path: |
+            actual/quality/evidence/runs
+            actual/quality/comparacion
+          retention-days: 90
