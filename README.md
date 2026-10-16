@@ -171,8 +171,8 @@ Trabajo final de Calidad de Software (Desarrollo de Software, nivel 4, ITQ). Int
 - **Baseline:** tag `baseline-calidad-v1`, commit `afac785407c041abc13f9b8651e70293aae488d4` (10/10/2026).
 - **Versión actual:** rama `main`. Incluye la corrección de D01 (`f6c1a4c`), la de D02–D04 (`838aefb`), la integración continua y la reevaluación de ambas versiones.
 - **Comparación antes/después:** `quality/comparacion/comparacion.md`. La genera el flujo **Comparación de calidad** (`.github/workflows/calidad.yml`), que mide la baseline y la versión actual en la misma máquina con los mismos scripts.
-- **Defectos:** D01–D04 cerrados y O01 abierta, registrados como Issues del repositorio.
-- **Informe y presentación:** `quality/deliverables/final`.
+- **Hallazgos:** D01–D04 cerrados y O01–O04 abiertos, registrados como Issues #2 a #9.
+- **Informe:** `quality/deliverables/final/NeonPlay_Trabajo_Final_Calidad_Software.docx` (16/10/2026).
 
 Consulta `quality/README.md` para reproducir la evaluación con cuentas ficticias y un esquema separado.
 

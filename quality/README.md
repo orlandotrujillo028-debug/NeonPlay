@@ -22,7 +22,7 @@ Trabajo final de Calidad de Software, Desarrollo de Software nivel 4, Instituto 
 | `evidence/baseline`, `regression`, `regression-retry`, `instrumentacion-01`, `*.json`, `*.txt` | Evidencias originales de la primera evaluación (10/10/2026, Windows 11). No se modifican. |
 | `matrices/` | CSV de la primera evaluación y registro de defectos D01–D04 y O01. |
 | `piloto-O01/` | Protocolo, consentimiento, tareas, cuestionario SUS y calculadora del piloto con participantes nuevos. |
-| `deliverables/final/` | Informe y presentación vigentes. |
+| `deliverables/final/` | Informe vigente (16/10/2026) y presentación del 11/10/2026, que no incluye la reevaluación. |
 
 ## Repetir la comparación
 

@@ -1,33 +1,30 @@
 # Entrega final de NeonPlay
 
-Trabajo final de Calidad de Software. Integrantes: Kevin Adrián Quiñonez Rocha y Orlando Eloy Trujillo. Carrera: Desarrollo de Software, nivel 4. Docente: Ing. Sebastián Landázuri G. Fecha de entrega: 15/10/2026.
+Trabajo final de Calidad de Software. Integrantes: Kevin Adrián Quiñonez Rocha, Orlando Eloy Trujillo y Francisco Almeida. Carrera: Desarrollo de Software, nivel 4. Docente: Ing. Sebastián Landázuri G.
 
-## Archivos para entregar
+## Archivos
 
-- `Informe_final_NeonPlay_resumido_con_imagenes.docx`: informe editable de 18 páginas. Incluye índice con páginas comprobadas, objetivos, metodología, criterios, resultados, discusión, plan de mejora, conclusiones, bibliografía y anexos con veinte casos y seis capturas.
-- `Presentacion_NeonPlay_formato_institucional.pptx`: dieciocho diapositivas editables con la plantilla institucional original y seis capturas reales del proyecto. Las notas del orador contienen el guion de dieciocho minutos y dos minutos para preguntas. En PowerPoint, abre Vista → Página de notas o usa la vista Moderador para consultarlas.
-- `Anexos_finales_NeonPlay.zip`: seis matrices CSV, capturas y registros originales, scripts de reproducción e instrucciones. No incluye datos físicos de PostgreSQL.
-- `matrices`: copia de los CSV sin comprimir. En Excel, usa Datos → Desde texto/CSV, codificación UTF-8 y delimitador coma.
+- `NeonPlay_Trabajo_Final_Calidad_Software.docx`: informe vigente, actualizado el 16/10/2026. Incluye la matriz de comparación antes y después medida en GitHub Actions (Tabla 27), la reinterpretación de la baseline con D02 y D03 como defectos críticos, las observaciones O02 a O04 y el plan de mejora actualizado. Al abrirlo, Word pide actualizar los campos: acepta para refrescar el índice. Exporta el PDF desde Word (Archivo → Exportar) para conservar la paginación institucional.
+- `Presentacion_NeonPlay_formato_institucional.pptx`: presentación del 11/10/2026. Está desactualizada respecto del informe: no incluye D02–D04 ni la reevaluación.
 
-Esta entrega conserva los logotipos, fondos, cabecera, pie, márgenes y formato institucional de las plantillas suministradas. Los archivos originales de las plantillas permanecen intactos. El informe usa Arial 12 negro; la presentación mantiene sus fuentes institucionales y contiene tablas y un gráfico nativos.
+## Resultados vigentes
 
-El informe se resumió a 18 páginas el 11/10/2026 e incluye seis capturas reales comentadas. La presentación se preparó a partir de ese informe el mismo día. Las versiones anteriores se conservan. Se conservaron las plantillas y los resultados de la evaluación del 10/10/2026.
+Medición del 16/10/2026 en la misma máquina de GitHub Actions para ambas versiones (`quality/comparacion/comparacion.md`):
 
-## Lectura de los resultados
-
-Los veinte casos funcionales de la baseline obtuvieron Pass. La regresión conserva veinte resultados finales Pass y el intento previo de CP09. Las veintiséis pruebas complementarias son un conjunto separado. Las treinta consultas correctas del catálogo tuvieron mediana de 3,60 ms y p95 de 4,45 ms en el entorno local.
-
-El piloto P01 es un autorreporte de cinco tareas intentadas: tres sin ayuda y dos con ayuda, equivalente a 60%. La finalización posterior de las tareas asistidas no se confirmó. La observación O01 continúa abierta; el defecto de compilación D01 quedó cerrado con una corrección verificada. Estas diferencias se explican en el informe y en el guion.
+- Las 52 pruebas actuales: 27 de 52 sobre el código de la baseline y 52 de 52 sobre la versión actual.
+- Defectos críticos abiertos: 2 (D02, D03) → 0. Defectos conocidos abiertos: 4 → 0.
+- Casos de navegador CP01–CP20: 20 de 20 en ambas versiones.
+- Cobertura del servidor: 88,8 % → 89,0 % de líneas y 78,8 % → 81,8 % de ramas.
+- Sin cambio y registrados como observaciones: LCP del catálogo de 12,2 s por imágenes de 3 MB (O02), accesibilidad 94/100 con fallos de contraste (O03) y 13 vulnerabilidades altas o críticas en dependencias (O04).
+- O01 (interacción) sigue abierta: el piloto con participantes nuevos está preparado en `quality/piloto-O01`.
 
 ## Código, versiones y evidencias
 
-Repositorio: https://github.com/orlandotrujillo028-debug/NeonPlay
+Repositorio público: https://github.com/orlandotrujillo028-debug/NeonPlay — rama `main`.
 
-Rama de entrega: `codex/calidad-evaluacion`. En el repositorio, los archivos definitivos están en `quality/deliverables/final`; las matrices y evidencias están en `quality/matrices` y `quality/evidence`.
+- Baseline: tag `baseline-calidad-v1`, commit `afac785`.
+- Primera mejora (D01): `f6c1a4c`. Segunda mejora (D02–D04): `838aefb`.
+- Reevaluación, integración continua y registro de hallazgos: pull request #10.
+- Hallazgos: Issues #2 a #9 (D01–D04 cerrados, O01–O04 abiertos).
 
-- Baseline: tag `baseline-calidad-v1`, commit `afac785407c041abc13f9b8651e70293aae488d4`.
-- Mejora verificada: `f6c1a4c1db8af32cbd3311ec4c6fe2d20d9caa14`.
-
-El repositorio es privado; el docente necesita acceso para consultarlo. El README principal explica cómo configurar NeonPlay y `quality/README.md` detalla cómo repetir la evaluación. El ZIP conserva los registros brutos y un manifiesto SHA-256 para comprobar que sus archivos no cambiaron.
-
-La primera entrega se mantiene como referencia. Para entregar, utiliza el informe resumido y la presentación institucional indicados en esta lista.
+`quality/README.md` explica cómo repetir la evaluación en GitHub Actions o en Windows.
