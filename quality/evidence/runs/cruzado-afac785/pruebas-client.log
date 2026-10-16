@@ -1,0 +1,42 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/NeonPlay/NeonPlay/antes/client[39m
+
+ [32m✓[39m src/lib.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Suites 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/cart.test.ts[2m [ src/cart.test.ts ][22m
+[31m[1mError[22m: Cannot find module './cart' imported from '/home/runner/work/NeonPlay/NeonPlay/antes/client/src/cart.test.ts'[39m
+[36m [2m❯[22m src/cart.test.ts:[2m2:1[22m[39m
+    [90m  1| [39m[35mimport[39m { describe[33m,[39m expect[33m,[39m it } [35mfrom[39m [32m'vitest'[39m[33m;[39m
+    [90m  2| [39m[35mimport[39m { reconcileCart } [35mfrom[39m [32m'./cart'[39m[33m;[39m
+    [90m   | [39m[31m^[39m
+    [90m  3| [39m[35mimport[39m type { [33mCartItem[39m[33m,[39m [33mGame[39m } [35mfrom[39m [32m'./types'[39m[33m;[39m
+    [90m  4| [39m
+
+[31m[1mCaused by: Error[22m: Failed to load url ./cart (resolved id: ./cart) in /home/runner/work/NeonPlay/NeonPlay/antes/client/src/cart.test.ts. Does the file exist?[39m
+[90m [2m❯[22m loadAndTransform ../node_modules/vite/dist/node/chunks/dep-Bm2ujbhY.js:[2m26109:33[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/checkout.test.ts[2m [ src/checkout.test.ts ][22m
+[31m[1mError[22m: Cannot find module './checkout' imported from '/home/runner/work/NeonPlay/NeonPlay/antes/client/src/checkout.test.ts'[39m
+[36m [2m❯[22m src/checkout.test.ts:[2m2:1[22m[39m
+    [90m  1| [39m[35mimport[39m { afterEach[33m,[39m describe[33m,[39m expect[33m,[39m it[33m,[39m vi } [35mfrom[39m [32m'vitest'[39m[33m;[39m
+    [90m  2| [39m[35mimport[39m {
+    [90m   | [39m[31m^[39m
+    [90m  3| [39m  prepareCheckoutAttempt[33m,[39m
+    [90m  4| [39m  loadCheckoutAttempt[33m,[39m
+
+[31m[1mCaused by: Error[22m: Failed to load url ./checkout (resolved id: ./checkout) in /home/runner/work/NeonPlay/NeonPlay/antes/client/src/checkout.test.ts. Does the file exist?[39m
+[90m [2m❯[22m loadAndTransform ../node_modules/vite/dist/node/chunks/dep-Bm2ujbhY.js:[2m26109:33[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 22:27:35
+[2m   Duration [22m 493ms[2m (transform 158ms, setup 0ms, collect 94ms, tests 30ms, environment 1ms, prepare 393ms)[22m
+
+JSON report written to /home/runner/work/NeonPlay/NeonPlay/actual/quality/evidence/runs/cruzado-afac785/pruebas-client.json

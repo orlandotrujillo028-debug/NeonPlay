@@ -1,0 +1,12 @@
+file:///home/runner/work/NeonPlay/NeonPlay/antes/quality/lighthouse.mjs:42
+    if (r.status !== 0) throw new Error(`Lighthouse falló en ${url}: ${r.stderr}`);
+                              ^
+
+Error: Lighthouse falló en /: Runtime error encountered: Something went wrong with recording the trace over your page load. Please run Lighthouse again. (NO_NAVSTART)
+
+    at file:///home/runner/work/NeonPlay/NeonPlay/antes/quality/lighthouse.mjs:42:31
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.3

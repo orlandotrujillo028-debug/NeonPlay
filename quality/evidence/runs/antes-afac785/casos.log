@@ -1,0 +1,24 @@
+CP01 Pass: Cuenta creada y perfil autenticado HTTP 200 con rol CUSTOMER.
+CP02 Pass: {"browser":{"valid":false,"message":"Please include an '@' in the email address. 'correo-invalido' is missing an '@'."},"server":{"status":400,"body":{"message":"email: Invalid email"}}}
+CP03 Pass: {"server":{"status":400,"body":{"message":"password: String must contain at least 8 character(s)"}},"location":"/register"}
+CP04 Pass: Ya existe un registro con ese nombre o correo.
+CP05 Pass: Perfil accesible con sesión; después del logout, redirección a login y HTTP 401.
+CP06 Pass: Correo o contraseña incorrectos.
+CP07 Fail: The expression evaluated to a falsy value:
+
+  assert(titles.every(t=>/Nexus/i.test(t)))
+
+CP08 Pass: Estado vacío mostrado; se recuperan 8 tarjetas.
+CP09 Pass: {"category":"Acción","matches":["Nexus: Beyond the Void","Titan Protocol"],"clear":true}
+CP10 Pass: {"price-asc":[19.99,24.99,29.99,29.99,34.99,39.99,44.99,49.99],"price-desc":[49.99,44.99,39.99,34.99,29.99,29.99,24.99,19.99]}
+CP11 Pass: Detalle con nombre, precio y stock; ruta inexistente informa indisponibilidad y HTTP 404.
+CP12 Pass: {"quantity":1,"total":"$39.99"}
+CP13 Pass: {"quantity":2,"total":"$79.98"}
+CP14 Pass: Recarga conserva dos unidades; eliminar muestra el estado vacío.
+CP15 Pass: {"orderId":"cmvbjefcc00090cukid3qxkoa","total":"39.99","priceSnapshot":"39.99","stock":1}
+CP16 Pass: {"status":409,"body":{"message":"Stock insuficiente para Void Command."}}
+CP17 Pass: {"created":true,"read":true,"updatedPrice":31.99,"deleted":true}
+CP18 Pass: {"browserValid":false,"server":{"status":400,"body":{"message":"price: Number must be greater than or equal to 0.01 · stock: Number must be greater than or equal to 0"}}}
+CP19 Pass: Producto archivado HTTP 404, pedido conservado con precio 39,99 y restauración HTTP 200.
+CP20 Pass: Cliente sin permisos ve acceso restringido (403); anónimo va a login (401).
+Resultado: 19/20 Pass.

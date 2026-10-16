@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-16T22:29:00.507Z",
+  "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+  "shortCommit": "e2c9924",
+  "label": "despues",
+  "preset": "desktop",
+  "runsPerPage": 3,
+  "pages": {
+    "inicio": {
+      "url": "/",
+      "scores": {
+        "performance": 83,
+        "accessibility": 96,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 748,
+        "largest-contentful-paint": 2953,
+        "total-blocking-time": 40,
+        "cumulative-layout-shift": 0,
+        "total-byte-weight": 11812506
+      },
+      "failedAccessibilityAudits": [
+        "color-contrast",
+        "label-content-name-mismatch"
+      ]
+    },
+    "catalogo": {
+      "url": "/catalog",
+      "scores": {
+        "performance": 75,
+        "accessibility": 94,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 754,
+        "largest-contentful-paint": 12219,
+        "total-blocking-time": 35,
+        "cumulative-layout-shift": 0.01,
+        "total-byte-weight": 14448663
+      },
+      "failedAccessibilityAudits": [
+        "color-contrast",
+        "heading-order",
+        "label-content-name-mismatch"
+      ]
+    },
+    "detalle": {
+      "url": "/game/nexus-beyond-the-void",
+      "scores": {
+        "performance": 83,
+        "accessibility": 95,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "first-contentful-paint": 743,
+        "largest-contentful-paint": 2887,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.07,
+        "total-byte-weight": 3207955
+      },
+      "failedAccessibilityAudits": [
+        "color-contrast",
+        "label-content-name-mismatch"
+      ]
+    },
+    "carrito": {
+      "url": "/cart",
+      "scores": {
+        "performance": 99,
+        "accessibility": 92,
+        "best-practices": 96,
+        "seo": 91
+      },
+      "metrics": {
+        "first-contentful-paint": 745,
+        "largest-contentful-paint": 832,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "total-byte-weight": 631323
+      },
+      "failedAccessibilityAudits": [
+        "color-contrast",
+        "heading-order",
+        "label-content-name-mismatch"
+      ]
+    }
+  },
+  "average": {
+    "performance": 85,
+    "accessibility": 94,
+    "best-practices": 96,
+    "seo": 92
+  }
+}

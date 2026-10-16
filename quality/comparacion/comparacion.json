@@ -1,0 +1,849 @@
+{
+  "date": "2026-10-16T22:31:29.094Z",
+  "antes": "afac785407c041abc13f9b8651e70293aae488d4",
+  "despues": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+  "rows": [
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Casos de navegador CP01–CP20 aprobados",
+      "antes": "19/20",
+      "despues": "19/20",
+      "criterio": "≥ 95%",
+      "conclusion": "Antes: Cumple; después: Cumple"
+    },
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Las 52 pruebas actuales ejecutadas sobre el código",
+      "antes": "27/52 (51,9%); 5 fallan y 20 no ejecutables",
+      "despues": "52/52 (100,0%)",
+      "criterio": "100%",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Conciliación del carrito correcta (D04, 6 escenarios)",
+      "antes": "0/6 (la lógica no existía como módulo verificable)",
+      "despues": "6/6",
+      "criterio": "6/6",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Defectos críticos abiertos (escala de la Tabla 19)",
+      "antes": "2 (D02, D03)",
+      "despues": "0",
+      "criterio": "0",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Defectos conocidos abiertos (D01–D04)",
+      "antes": "4 (1 detectado el 10/10 y 3 latentes)",
+      "despues": "0",
+      "criterio": "0",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Adecuación funcional",
+      "metrica": "Densidad de defectos",
+      "antes": "1,11 por KSLOC (4 / 3,607)",
+      "despues": "0 conocidos abiertos",
+      "criterio": "Tendencia descendente",
+      "conclusion": "Mejora"
+    },
+    {
+      "car": "Fiabilidad",
+      "metrica": "Reintentos con la misma clave resueltos correctamente (D02, 6 escenarios de API)",
+      "antes": "1/6",
+      "despues": "6/6",
+      "criterio": "6/6",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Fiabilidad",
+      "metrica": "Clave de compra conservada ante recargas y reintentos (D03, 14 escenarios)",
+      "antes": "0/14 (la lógica no existía como módulo verificable)",
+      "despues": "14/14",
+      "criterio": "14/14",
+      "conclusion": "Antes: No cumple; después: Cumple"
+    },
+    {
+      "car": "Fiabilidad",
+      "metrica": "Respuestas correctas del catálogo (30 consultas)",
+      "antes": "30/30",
+      "despues": "30/30",
+      "criterio": "30/30",
+      "conclusion": "Antes: Cumple; después: Cumple"
+    },
+    {
+      "car": "Fiabilidad",
+      "metrica": "Respuestas correctas del catálogo (100 consultas)",
+      "antes": "100/100",
+      "despues": "100/100",
+      "criterio": "100/100",
+      "conclusion": "Antes: Cumple; después: Cumple"
+    },
+    {
+      "car": "Eficiencia de desempeño",
+      "metrica": "Catálogo: mediana / p95 (100 consultas, ms)",
+      "antes": "5,12 / 6,02",
+      "despues": "5,08 / 5,89",
+      "criterio": "≤ 300 / ≤ 500 ms",
+      "conclusion": "Antes: Cumple; después: Cumple"
+    },
+    {
+      "car": "Eficiencia de desempeño",
+      "metrica": "Lighthouse: rendimiento (promedio de 4 páginas)",
+      "antes": "n/d",
+      "despues": "85",
+      "criterio": "≥ 90 (banda verde de Lighthouse)",
+      "conclusion": "Antes: Sin dato; después: No cumple"
+    },
+    {
+      "car": "Eficiencia de desempeño",
+      "metrica": "Lighthouse: LCP de la página más lenta (ms)",
+      "antes": "n/d",
+      "despues": "12.219",
+      "criterio": "≤ 2.500 ms",
+      "conclusion": "Antes: Sin dato; después: No cumple"
+    },
+    {
+      "car": "Eficiencia de desempeño",
+      "metrica": "JavaScript del cliente (kB, sin comprimir / gzip)",
+      "antes": "573,88 / 145,09",
+      "despues": "575,89 / 145,67",
+      "criterio": "Archivo ≤ 500 kB (aviso de Vite)",
+      "conclusion": "Antes: No cumple; después: No cumple"
+    },
+    {
+      "car": "Capacidad de interacción",
+      "metrica": "Lighthouse: accesibilidad (promedio de 4 páginas)",
+      "antes": "n/d",
+      "despues": "94",
+      "criterio": "≥ 90",
+      "conclusion": "Antes: Sin dato; después: Cumple"
+    },
+    {
+      "car": "Capacidad de interacción",
+      "metrica": "Tareas sin ayuda en el piloto (O01)",
+      "antes": "3/5 = 60% (P01, autorreporte)",
+      "despues": "Pendiente: protocolo del Anexo F con participantes nuevos",
+      "criterio": "≥ 80%",
+      "conclusion": "Antes: No cumple; después: sin medir"
+    },
+    {
+      "car": "Seguridad",
+      "metrica": "Vulnerabilidades altas o críticas en dependencias (npm audit)",
+      "antes": "13",
+      "despues": "13",
+      "criterio": "0",
+      "conclusion": "Antes: No cumple; después: No cumple"
+    },
+    {
+      "car": "Seguridad",
+      "metrica": "Vulnerabilidades totales en dependencias (npm audit)",
+      "antes": "14",
+      "despues": "14",
+      "criterio": "Tendencia",
+      "conclusion": "Mismas dependencias en ambas versiones"
+    },
+    {
+      "car": "Seguridad",
+      "metrica": "Lighthouse: buenas prácticas (promedio)",
+      "antes": "n/d",
+      "despues": "96",
+      "criterio": "≥ 90",
+      "conclusion": "Antes: Sin dato; después: Cumple"
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Pruebas automatizadas propias de la versión (aprobadas/total)",
+      "antes": "26/26",
+      "despues": "52/52",
+      "criterio": "100% aprobadas",
+      "conclusion": "Antes: Cumple; después: Cumple"
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Cobertura de líneas del servidor",
+      "antes": "88,8%",
+      "despues": "89,0%",
+      "criterio": "Tendencia ascendente",
+      "conclusion": ""
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Cobertura de ramas del servidor",
+      "antes": "78,8%",
+      "despues": "81,8%",
+      "criterio": "Tendencia ascendente",
+      "conclusion": ""
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Cobertura de líneas del cliente",
+      "antes": "2,0%",
+      "despues": "4,7%",
+      "criterio": "Tendencia ascendente",
+      "conclusion": ""
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Líneas de código de producción (SLOC)",
+      "antes": "3.607",
+      "despues": "3.715",
+      "criterio": "Descriptiva",
+      "conclusion": ""
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Relación líneas de prueba / producción",
+      "antes": "0,096",
+      "despues": "0,156",
+      "criterio": "Tendencia ascendente",
+      "conclusion": ""
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Complejidad ciclomática media / máxima por función",
+      "antes": "2,35 / 29",
+      "despues": "2,38 / 29",
+      "criterio": "Máxima ≤ 10 (umbral de McCabe)",
+      "conclusion": "Antes: No cumple; después: No cumple"
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Funciones con complejidad > 10",
+      "antes": "10",
+      "despues": "10",
+      "criterio": "0",
+      "conclusion": "Antes: No cumple; después: No cumple"
+    },
+    {
+      "car": "Mantenibilidad",
+      "metrica": "Compilación en el entorno de CI (Linux)",
+      "antes": "Correcta",
+      "despues": "Correcta",
+      "criterio": "Código 0",
+      "conclusion": "D01 solo se reproduce en Windows con la API abierta"
+    }
+  ],
+  "defects": [
+    {
+      "id": "D01",
+      "severidad": "Media",
+      "titulo": "Build falla en Windows con la API abierta",
+      "detectado": "2026-10-10",
+      "corregido": "2026-10-10",
+      "commit": "f6c1a4c",
+      "detectadoPor": "Compilación habitual (npm run build)"
+    },
+    {
+      "id": "D02",
+      "severidad": "Crítica",
+      "titulo": "Se confirma el pedido de otro carrito al reutilizar la clave",
+      "detectado": "2026-10-15",
+      "corregido": "2026-10-15",
+      "commit": "838aefb",
+      "detectadoPor": "Segunda ronda; no lo detectaron CP01–CP20 ni las 26 pruebas iniciales"
+    },
+    {
+      "id": "D03",
+      "severidad": "Crítica",
+      "titulo": "Clave de compra perdida en un reintento (compra duplicada)",
+      "detectado": "2026-10-15",
+      "corregido": "2026-10-15",
+      "commit": "838aefb",
+      "detectadoPor": "Segunda ronda; no lo detectaron CP01–CP20 ni las 26 pruebas iniciales"
+    },
+    {
+      "id": "D04",
+      "severidad": "Media",
+      "titulo": "Actualización de precios sobre un carrito antiguo",
+      "detectado": "2026-10-15",
+      "corregido": "2026-10-15",
+      "commit": "838aefb",
+      "detectadoPor": "Segunda ronda; no lo detectaron CP01–CP20 ni las 26 pruebas iniciales"
+    }
+  ],
+  "escenarios": {
+    "D02": {
+      "antes": {
+        "passed": 1,
+        "executed": 6,
+        "expected": 6
+      },
+      "despues": {
+        "passed": 6,
+        "executed": 6,
+        "expected": 6
+      }
+    },
+    "D03": {
+      "antes": {
+        "passed": 0,
+        "executed": 0,
+        "expected": 14
+      },
+      "despues": {
+        "passed": 14,
+        "executed": 14,
+        "expected": 14
+      }
+    },
+    "D04": {
+      "antes": {
+        "passed": 0,
+        "executed": 0,
+        "expected": 6
+      },
+      "despues": {
+        "passed": 6,
+        "executed": 6,
+        "expected": 6
+      }
+    }
+  },
+  "pruebas": {
+    "antes": {
+      "passed": 26,
+      "total": 26
+    },
+    "despues": {
+      "passed": 52,
+      "total": 52
+    },
+    "cruzado": {
+      "passed": 27,
+      "executed": 32,
+      "expected": 52,
+      "failed": 5
+    }
+  },
+  "lighthouse": {
+    "despues": {
+      "inicio": {
+        "url": "/",
+        "scores": {
+          "performance": 83,
+          "accessibility": 96,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 748,
+          "largest-contentful-paint": 2953,
+          "total-blocking-time": 40,
+          "cumulative-layout-shift": 0,
+          "total-byte-weight": 11812506
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "label-content-name-mismatch"
+        ]
+      },
+      "catalogo": {
+        "url": "/catalog",
+        "scores": {
+          "performance": 75,
+          "accessibility": 94,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 754,
+          "largest-contentful-paint": 12219,
+          "total-blocking-time": 35,
+          "cumulative-layout-shift": 0.01,
+          "total-byte-weight": 14448663
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "heading-order",
+          "label-content-name-mismatch"
+        ]
+      },
+      "detalle": {
+        "url": "/game/nexus-beyond-the-void",
+        "scores": {
+          "performance": 83,
+          "accessibility": 95,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 743,
+          "largest-contentful-paint": 2887,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.07,
+          "total-byte-weight": 3207955
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "label-content-name-mismatch"
+        ]
+      },
+      "carrito": {
+        "url": "/cart",
+        "scores": {
+          "performance": 99,
+          "accessibility": 92,
+          "best-practices": 96,
+          "seo": 91
+        },
+        "metrics": {
+          "first-contentful-paint": 745,
+          "largest-contentful-paint": 832,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0,
+          "total-byte-weight": 631323
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "heading-order",
+          "label-content-name-mismatch"
+        ]
+      }
+    }
+  },
+  "cobertura": {
+    "antes": {
+      "server": {
+        "lines": {
+          "total": 749,
+          "covered": 665,
+          "skipped": 0,
+          "pct": 88.78
+        },
+        "statements": {
+          "total": 749,
+          "covered": 665,
+          "skipped": 0,
+          "pct": 88.78
+        },
+        "functions": {
+          "total": 13,
+          "covered": 12,
+          "skipped": 0,
+          "pct": 92.3
+        },
+        "branches": {
+          "total": 160,
+          "covered": 126,
+          "skipped": 0,
+          "pct": 78.75
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "client": {
+        "lines": {
+          "total": 2459,
+          "covered": 50,
+          "skipped": 0,
+          "pct": 2.03
+        },
+        "statements": {
+          "total": 2459,
+          "covered": 50,
+          "skipped": 0,
+          "pct": 2.03
+        },
+        "functions": {
+          "total": 19,
+          "covered": 5,
+          "skipped": 0,
+          "pct": 26.31
+        },
+        "branches": {
+          "total": 31,
+          "covered": 21,
+          "skipped": 0,
+          "pct": 67.74
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      }
+    },
+    "despues": {
+      "server": {
+        "lines": {
+          "total": 766,
+          "covered": 682,
+          "skipped": 0,
+          "pct": 89.03
+        },
+        "statements": {
+          "total": 766,
+          "covered": 682,
+          "skipped": 0,
+          "pct": 89.03
+        },
+        "functions": {
+          "total": 14,
+          "covered": 13,
+          "skipped": 0,
+          "pct": 92.85
+        },
+        "branches": {
+          "total": 170,
+          "covered": 139,
+          "skipped": 0,
+          "pct": 81.76
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "client": {
+        "lines": {
+          "total": 2528,
+          "covered": 118,
+          "skipped": 0,
+          "pct": 4.66
+        },
+        "statements": {
+          "total": 2528,
+          "covered": 118,
+          "skipped": 0,
+          "pct": 4.66
+        },
+        "functions": {
+          "total": 25,
+          "covered": 11,
+          "skipped": 0,
+          "pct": 44
+        },
+        "branches": {
+          "total": 68,
+          "covered": 56,
+          "skipped": 0,
+          "pct": 82.35
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      }
+    }
+  },
+  "catalogo": {
+    "antes": {
+      "30": {
+        "date": "2026-10-16T22:26:28.490Z",
+        "commit": "afac785407c041abc13f9b8651e70293aae488d4",
+        "shortCommit": "afac785",
+        "label": "antes",
+        "endpoint": "/api/games?limit=12&sort=price-asc",
+        "method": "HTTP secuencial, incluye lectura y validación JSON",
+        "warmup": 5,
+        "intervalMs": 250,
+        "sampleCount": 30,
+        "meanMs": 5.548,
+        "sdMs": 0.793,
+        "medianMs": 5.275,
+        "p95Ms": 7.504,
+        "p99Ms": 8.527,
+        "minMs": 4.912,
+        "maxMs": 8.527,
+        "correct": 30,
+        "criterion": {
+          "medianMaxMs": 300,
+          "p95MaxMs": 500,
+          "correctRequired": 30
+        }
+      },
+      "100": {
+        "date": "2026-10-16T22:26:54.144Z",
+        "commit": "afac785407c041abc13f9b8651e70293aae488d4",
+        "shortCommit": "afac785",
+        "label": "antes",
+        "endpoint": "/api/games?limit=12&sort=price-asc",
+        "method": "HTTP secuencial, incluye lectura y validación JSON",
+        "warmup": 5,
+        "intervalMs": 250,
+        "sampleCount": 100,
+        "meanMs": 5.24,
+        "sdMs": 0.533,
+        "medianMs": 5.12,
+        "p95Ms": 6.019,
+        "p99Ms": 7.676,
+        "minMs": 4.744,
+        "maxMs": 8.112,
+        "correct": 100,
+        "criterion": {
+          "medianMaxMs": 300,
+          "p95MaxMs": 500,
+          "correctRequired": 100
+        }
+      }
+    },
+    "despues": {
+      "30": {
+        "date": "2026-10-16T22:28:34.810Z",
+        "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+        "shortCommit": "e2c9924",
+        "label": "despues",
+        "endpoint": "/api/games?limit=12&sort=price-asc",
+        "method": "HTTP secuencial, incluye lectura y validación JSON",
+        "warmup": 5,
+        "intervalMs": 250,
+        "sampleCount": 30,
+        "meanMs": 5.389,
+        "sdMs": 0.659,
+        "medianMs": 5.214,
+        "p95Ms": 6.588,
+        "p99Ms": 7.731,
+        "minMs": 4.745,
+        "maxMs": 7.731,
+        "correct": 30,
+        "criterion": {
+          "medianMaxMs": 300,
+          "p95MaxMs": 500,
+          "correctRequired": 30
+        }
+      },
+      "100": {
+        "date": "2026-10-16T22:29:00.461Z",
+        "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+        "shortCommit": "e2c9924",
+        "label": "despues",
+        "endpoint": "/api/games?limit=12&sort=price-asc",
+        "method": "HTTP secuencial, incluye lectura y validación JSON",
+        "warmup": 5,
+        "intervalMs": 250,
+        "sampleCount": 100,
+        "meanMs": 5.194,
+        "sdMs": 0.459,
+        "medianMs": 5.084,
+        "p95Ms": 5.889,
+        "p99Ms": 7.326,
+        "minMs": 4.635,
+        "maxMs": 7.471,
+        "correct": 100,
+        "criterion": {
+          "medianMaxMs": 300,
+          "p95MaxMs": 500,
+          "correctRequired": 100
+        }
+      }
+    }
+  },
+  "audit": {
+    "antes": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 9,
+      "critical": 4,
+      "total": 14
+    },
+    "despues": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 9,
+      "critical": 4,
+      "total": 14
+    }
+  },
+  "estatica": {
+    "antes": {
+      "date": "2026-10-16T22:25:49.953Z",
+      "commit": "afac785407c041abc13f9b8651e70293aae488d4",
+      "shortCommit": "afac785",
+      "label": "antes",
+      "method": "TypeScript compiler API; SLOC sin líneas vacías ni comentarios; complejidad de McCabe por función",
+      "productionFiles": 19,
+      "productionSloc": 3607,
+      "testFiles": 2,
+      "testSloc": 346,
+      "testToCodeRatio": 0.096,
+      "functions": 265,
+      "complexityTotal": 624,
+      "complexityMean": 2.35,
+      "complexityMax": 29,
+      "functionsOver10": 10,
+      "functionsOver20": 2,
+      "largestFiles": [
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "sloc": 1007
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "sloc": 546
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "sloc": 544
+        },
+        {
+          "file": "client/src/App.tsx",
+          "sloc": 260
+        },
+        {
+          "file": "server/src/routes/admin.ts",
+          "sloc": 235
+        }
+      ],
+      "mostComplex": [
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "name": "AdminPage",
+          "cc": 29
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "name": "AuthPage",
+          "cc": 22
+        },
+        {
+          "file": "client/src/lib.ts",
+          "name": "anónima (línea 63)",
+          "cc": 13
+        },
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "name": "GameForm",
+          "cc": 13
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "name": "Home",
+          "cc": 13
+        },
+        {
+          "file": "server/src/app.ts",
+          "name": "errors",
+          "cc": 13
+        },
+        {
+          "file": "server/src/routes/orders.ts",
+          "name": "anónima (línea 17)",
+          "cc": 13
+        },
+        {
+          "file": "server/src/routes/admin.ts",
+          "name": "anónima (línea 177)",
+          "cc": 12
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "name": "CartPage",
+          "cc": 11
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "name": "CatalogPage",
+          "cc": 11
+        }
+      ]
+    },
+    "despues": {
+      "date": "2026-10-16T22:28:06.435Z",
+      "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+      "shortCommit": "e2c9924",
+      "label": "despues",
+      "method": "TypeScript compiler API; SLOC sin líneas vacías ni comentarios; complejidad de McCabe por función",
+      "productionFiles": 21,
+      "productionSloc": 3715,
+      "testFiles": 4,
+      "testSloc": 578,
+      "testToCodeRatio": 0.156,
+      "functions": 279,
+      "complexityTotal": 663,
+      "complexityMean": 2.38,
+      "complexityMax": 29,
+      "functionsOver10": 10,
+      "functionsOver20": 2,
+      "largestFiles": [
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "sloc": 1007
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "sloc": 550
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "sloc": 546
+        },
+        {
+          "file": "client/src/App.tsx",
+          "sloc": 260
+        },
+        {
+          "file": "server/src/routes/admin.ts",
+          "sloc": 235
+        }
+      ],
+      "mostComplex": [
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "name": "AdminPage",
+          "cc": 29
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "name": "AuthPage",
+          "cc": 22
+        },
+        {
+          "file": "client/src/lib.ts",
+          "name": "anónima (línea 63)",
+          "cc": 13
+        },
+        {
+          "file": "client/src/pages/Admin.tsx",
+          "name": "GameForm",
+          "cc": 13
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "name": "Home",
+          "cc": 13
+        },
+        {
+          "file": "server/src/app.ts",
+          "name": "errors",
+          "cc": 13
+        },
+        {
+          "file": "server/src/routes/orders.ts",
+          "name": "anónima (línea 38)",
+          "cc": 13
+        },
+        {
+          "file": "server/src/routes/admin.ts",
+          "name": "anónima (línea 177)",
+          "cc": 12
+        },
+        {
+          "file": "client/src/pages/Account.tsx",
+          "name": "CartPage",
+          "cc": 11
+        },
+        {
+          "file": "client/src/pages/Shop.tsx",
+          "name": "CatalogPage",
+          "cc": 11
+        }
+      ]
+    }
+  }
+}

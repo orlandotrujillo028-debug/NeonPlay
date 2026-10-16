@@ -1,0 +1,23 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/NeonPlay/NeonPlay/actual/server[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m tests/api.test.ts [2m([22m[2m26 tests[22m[2m)[22m[33m 5077[2mms[22m[39m
+   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mbloquea correos duplicados y credenciales incorrectas [33m 911[2mms[22m[39m
+   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mcada cliente consulta únicamente sus pedidos [33m 462[2mms[22m[39m
+   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mgestiona usuarios y protege al administrador actual [33m 460[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m26 passed[39m[22m[90m (26)[39m
+[2m   Start at [22m 22:27:57
+[2m   Duration [22m 5.85s[2m (transform 158ms, setup 0ms, collect 226ms, tests 5.08s, environment 0ms, prepare 107ms)[22m
+
+JSON report written to /home/runner/work/NeonPlay/NeonPlay/actual/quality/evidence/runs/despues-e2c9924/pruebas-server.json
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 89.03% ( 682/766 )
+Branches     : 81.76% ( 139/170 )
+Functions    : 92.85% ( 13/14 )
+Lines        : 89.03% ( 682/766 )
+================================================================================
