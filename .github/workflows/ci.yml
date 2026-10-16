@@ -1,0 +1,43 @@
+name: CI
+
+# Compila y ejecuta las pruebas automatizadas en cada cambio, para que un
+# fallo como D01 se detecte antes de integrar (acción preventiva de D01).
+on:
+  push:
+    branches: [main, 'calidad/**']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-y-pruebas:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: neonplay
+          POSTGRES_PASSWORD: neonplay
+          POSTGRES_DB: neonplay
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U neonplay" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://neonplay:neonplay@127.0.0.1:5432/neonplay?schema=public
+      CLIENT_URL: http://localhost:5173
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Secreto aleatorio para las sesiones de prueba
+        run: echo "JWT_SECRET=$(openssl rand -hex 48)" >> "$GITHUB_ENV"
+      - run: npm ci --no-audit --no-fund
+      - name: Compilar servidor y cliente
+        run: npm run build
+      - name: Pruebas de API (PostgreSQL real) y del cliente
+        run: npm test

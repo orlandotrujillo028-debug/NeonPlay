@@ -17,6 +17,7 @@
     "db:seed": "npm run db:seed -w server",
     "build": "npm run build -w server && npm run build -w client",
     "test": "npm run test -w server && npm run test -w client",
+    "test:coverage": "npm run test:coverage -w server && npm run test:coverage -w client",
     "start": "npm run start -w server",
     "format": "prettier --write ."
   },

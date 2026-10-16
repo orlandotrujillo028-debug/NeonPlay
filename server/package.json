@@ -13,7 +13,9 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "pretest:coverage": "node ../scripts/ensure-prisma-client.mjs",
+    "test:coverage": "vitest run --coverage.enabled --coverage.provider=v8 --coverage.include=src/** --coverage.reporter=text-summary --coverage.reporter=json-summary"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
