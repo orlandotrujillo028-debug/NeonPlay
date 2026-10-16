@@ -1,23 +1,40 @@
 # Evaluación de calidad de NeonPlay
 
-Actividad de Calidad de Software, Desarrollo de Software nivel 4. Integrantes: Kevin Adrián Quiñonez Rocha y Orlando Eloy Trujillo. Docente: Ing. Sebastián Landázuri G. Entrega: 15/10/2026. Evaluación ejecutada el 10/10/2026.
+Trabajo final de Calidad de Software, Desarrollo de Software nivel 4, Instituto Superior Tecnológico Quito. Integrantes: Kevin Adrián Quiñonez Rocha, Orlando Eloy Trujillo y Francisco Almeida. Docente: Ing. Sebastián Landázuri G.
 
-## Versiones y resultados
+## Versiones evaluadas
 
-- Baseline `baseline-calidad-v1`: `afac785407c041abc13f9b8651e70293aae488d4`.
-- Mejora comprobada: `f6c1a4c1db8af32cbd3311ec4c6fe2d20d9caa14`.
-- Rama de entrega: `codex/calidad-evaluacion`.
-- 20 casos de caja negra Pass en la baseline; regresión final de 20 casos Pass, con repetición documentada de CP09.
-- 26 pruebas complementarias Pass: 20 de API sobre PostgreSQL real y 6 de carrito/fechas.
-- 30 consultas HTTP correctas; mediana 3,60 ms y p95 4,45 ms en loopback.
-- Piloto P01 por autorreporte: cinco tareas intentadas, tres sin ayuda (60%). Necesitó ayuda en compra e historial. No se confirmaron tiempos ni finalización de las tareas asistidas.
-- D01, build con motor Prisma bloqueado en Windows: cerrado. O01, interacción de compra e historial: pendiente de investigar.
+| Punto | Commit | Fecha | Qué contiene |
+|---|---|---|---|
+| Baseline (`baseline-calidad-v1`) | `afac785` | 10/10/2026 | Versión inicial del ecommerce. |
+| Primera mejora | `f6c1a4c` | 10/10/2026 | Corrige D01 (build en Windows); no cambia reglas de negocio. |
+| Segunda mejora | `838aefb` | 15/10/2026 | Corrige D02–D04 (compra y carrito); 52 pruebas. |
+| Versión actual | rama `main` | 16/10/2026 | Integración continua, scripts trazables y reevaluación antes/después. |
 
-La entrega definitiva está en `deliverables/final`: informe Word de 18 páginas con seis capturas reales y presentación de 18 diapositivas. El informe vigente es `Informe_final_NeonPlay_resumido_con_imagenes.docx`, resumido el 11/10/2026. La presentación vigente es `Presentacion_NeonPlay_formato_institucional.pptx` y conserva la plantilla institucional; sus notas incluyen el guion de 18 minutos y dos minutos para preguntas. Los archivos de las versiones anteriores se conservan como referencia. `matrices` conserva los CSV UTF-8 con BOM, legibles en Excel; `evidence` contiene los resultados y capturas originales. Las credenciales de prueba son exclusivamente ficticias, sin relación con las cuentas habituales.
+## Dónde está cada resultado
 
-## Repetir la evaluación de la versión mejorada
+| Carpeta o archivo | Contenido |
+|---|---|
+| `comparacion/comparacion.md` (y `.csv`, `.json`) | Matriz antes/después con criterio y conclusión por métrica. |
+| `evidence/runs/antes-afac785/` | Medición de la baseline en GitHub Actions: build, pruebas y cobertura, casos de navegador, catálogo (30 y 100 consultas), Lighthouse, npm audit, tamaño del paquete y métricas estáticas. |
+| `evidence/runs/despues-<commit>/` | Las mismas mediciones de la versión actual, en la misma máquina. |
+| `evidence/runs/cruzado-afac785/` | Las 52 pruebas actuales ejecutadas sobre el código de la baseline. |
+| `evidence/baseline`, `regression`, `regression-retry`, `instrumentacion-01`, `*.json`, `*.txt` | Evidencias originales de la primera evaluación (10/10/2026, Windows 11). No se modifican. |
+| `matrices/` | CSV de la primera evaluación y registro de defectos D01–D04 y O01. |
+| `piloto-O01/` | Protocolo, consentimiento, tareas, cuestionario SUS y calculadora del piloto con participantes nuevos. |
+| `deliverables/final/` | Informe y presentación vigentes. |
 
-Configura NeonPlay según el README principal. Usa Node 22.12 o superior y PostgreSQL iniciado. Los scripts se ejecutan desde la raíz de NeonPlay.
+## Repetir la comparación
+
+### En GitHub Actions (recomendado)
+
+El flujo **Comparación de calidad** se ejecuta en cada PR hacia `main` y también se puede lanzar a mano desde la pestaña **Actions → Comparación de calidad → Run workflow**. Mide la baseline y la versión actual una después de otra en la misma máquina y publica el artefacto `comparacion-calidad` con todas las evidencias. El resumen del flujo muestra la matriz.
+
+Los pasos están en `quality/ci/medir-version.sh` (una versión) y `quality/ci/pruebas-cruzadas.sh` (pruebas actuales sobre la baseline). `quality/compare-versions.mjs` arma la matriz.
+
+### En tu equipo (Windows)
+
+Configura NeonPlay según el README principal. Usa Node 22.12 o superior y PostgreSQL iniciado. Ejecuta desde la raíz:
 
 ```powershell
 npm.cmd ci
@@ -28,25 +45,30 @@ node quality/start-evaluation.mjs
 
 La última orden mantiene una API y tienda compilada en `http://127.0.0.1:4011` y crea un esquema aleatorio `neonplay_quality_<12 caracteres hexadecimales>`, separado de `public`. Cuentas de ese esquema: `admin@quality.test` y `player@quality.test`, contraseña ficticia `QualityTest!2026`. Nexus empieza con precio 39,99 y stock 2; Void Command con stock 0.
 
-Para ejecutar el navegador se utilizó Playwright 1.62.1 y Google Chrome instalado. Puedes instalar el ejecutor en una carpeta separada del proyecto. En una segunda terminal:
+En una segunda terminal instala Playwright y Lighthouse fuera del proyecto y ejecuta las mediciones:
 
 ```powershell
-npm.cmd install --prefix ..\NeonPlay-QA-tools playwright@1.62.1
+npm.cmd install --prefix ..\NeonPlay-QA-tools playwright@1.62.1 lighthouse@12
 $env:QUALITY_RUNTIME_MODULES=(Resolve-Path ..\NeonPlay-QA-tools\node_modules).Path
-# Opcional: cambia QUALITY_BROWSER si Chrome está en otra ruta.
-node quality/browser-cases.mjs nueva-ejecucion
-node quality/measure-catalog.mjs
-npm.cmd test
+$env:CHROME_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe"
+node quality/browser-cases.mjs casos
+node quality/measure-catalog.mjs 30
+node quality/measure-catalog.mjs 100
+node quality/lighthouse.mjs
+node quality/static-metrics.mjs
+node quality/bundle-size.mjs
+npm.cmd install --no-save @vitest/coverage-v8@3.2.4
+npm.cmd run test:coverage
 ```
 
-Las capturas y JSON se escriben en `quality/evidence/<fase>`. Usa un nombre de fase nuevo para conservar ejecuciones anteriores. La medición sobrescribe `performance.json`: guarda una copia si comparas otra versión. Antes de repetir la suite sobre el mismo esquema, ejecuta `node quality/reset-evaluation.mjs`; solo restablece sus datos ficticios y exige el prefijo temporal validado. Para repetir únicamente el filtro usa una fase nueva y `CP09` como tercer argumento del ejecutor.
+Cada script escribe en `quality/evidence/runs/<commit>/`, con el commit evaluado dentro de cada JSON. Así una medición nueva no sobrescribe la de otra versión. Para guardar en otra carpeta define `QUALITY_OUT`; para ponerle nombre, `QUALITY_LABEL`.
 
-Al terminar, Ctrl+C en la terminal de `start-evaluation.mjs` cierra la API y elimina su esquema. Si una interrupción abrupta impidió esa limpieza, detén primero esa instancia y ejecuta `node quality/cleanup-evaluation.mjs`. Nunca se elimina `public` ni la base física.
+Antes de repetir los casos de navegador sobre el mismo esquema, ejecuta `node quality/reset-evaluation.mjs`; solo restablece sus datos ficticios y exige el prefijo temporal validado. Al terminar, Ctrl+C en la terminal de `start-evaluation.mjs` cierra la API y elimina su esquema. Si una interrupción impidió esa limpieza, ejecuta `node quality/cleanup-evaluation.mjs`. Nunca se elimina `public` ni la base física.
 
-## Baseline y trazabilidad
+## Primera evaluación (10/10/2026) y trazabilidad
 
-El código de negocio se ejecutó en la baseline antes de la mejora. Con la API abierta, su comando habitual de build reprodujo D01; para preparar esa ejecución se usaron `node node_modules/typescript/bin/tsc -p server/tsconfig.json` y `npm.cmd run build -w client`. Es una alternativa de compilación del mismo código, sin cambiarlo. Para investigar la baseline utiliza otro checkout del tag, conservando el ejecutor como herramienta de prueba separada, y configura su entorno según el README.
+El código de negocio se ejecutó en la baseline antes de la mejora. Con la API abierta, su comando habitual de build reprodujo D01; para preparar esa ejecución se usaron `node node_modules/typescript/bin/tsc -p server/tsconfig.json` y `npm.cmd run build -w client`. Es una alternativa de compilación del mismo código, sin cambiarlo.
 
-`instrumentacion-01` conserva el ensayo inicial del ejecutor, que usó selectores y un nombre de campo incorrectos. No representa fallos funcionales del producto. `baseline/results.json` es la ejecución aceptada después de corregir esa instrumentación. `regression/results.json` conserva 19 Pass y la espera fallida de CP09; `regression-retry/results.json` registra su repetición satisfactoria después de esperar la navegación. La matriz de regresión usa el último resultado y mantiene la ruta a ese intento. Los archivos brutos se conservan para revisar la secuencia.
+`instrumentacion-01` conserva el ensayo inicial del ejecutor, que usó selectores y un nombre de campo incorrectos. No representa fallos funcionales del producto. `baseline/results.json` es la ejecución aceptada después de corregir esa instrumentación. `regression/results.json` conserva 19 Pass y la espera fallida de CP09; `regression-retry/results.json` registra su repetición satisfactoria. En esos tres archivos el campo `baselineCommit` es una constante del script; el commit realmente evaluado está en el campo `versionCommit` de cada caso. Desde la reevaluación, cada archivo registra además `commit` en su encabezado.
 
-Los cuatro atributos y umbrales están en el informe. Las tasas se calculan con ×100, corrigiendo explícitamente el ×10 impreso en la consigna. El rendimiento local y la muestra de un participante no se extrapolan a producción ni constituyen certificación ISO.
+Los atributos, umbrales y la escala de severidad están en el informe. Las tasas se calculan con ×100. El rendimiento local y los pilotos no se extrapolan a producción ni constituyen certificación ISO.

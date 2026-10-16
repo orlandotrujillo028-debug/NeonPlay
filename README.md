@@ -8,9 +8,9 @@ Abre **NeonPlay.code-workspace** con Visual Studio Code. Abre una terminal integ
 
 En PowerShell usa `npm.cmd`, como en los ejemplos de esta guía. Así evitas el bloqueo de `npm.ps1` sin cambiar la política de ejecución de scripts. En Linux y macOS utiliza `npm` en lugar de `npm.cmd`.
 
-Este equipo ya quedó configurado: dependencias instaladas, migración aplicada, ocho videojuegos y dos cuentas con contraseñas aleatorias. Se dejó un pedido de demostración realizado durante la revisión en navegador.
+La primera vez en un equipo nuevo sigue **Instalación en otro equipo** (más abajo): instala dependencias, crea `server/.env` con contraseñas aleatorias, prepara PostgreSQL y carga ocho videojuegos de demostración.
 
-Para trabajar nuevamente:
+Una vez configurado, para trabajar:
 
 ```powershell
 npm.cmd run db:local
@@ -148,7 +148,9 @@ NeonPlay/
 
 ## Verificación
 
-Se verificaron la compilación de frontend y backend y **52 pruebas automáticas**: 26 de API sobre PostgreSQL real y 26 de carrito, reintentos y fechas. Las pruebas de API crean un esquema aleatorio `neonplay_test_<identificador>` y eliminan únicamente ese esquema al terminar. Necesitan la base iniciada y permisos para crear esquemas. No alteran el catálogo de `public`. Las correcciones y regresiones añadidas el 15/10/2026 están documentadas en `docs/CORRECCIONES_2026-10-15.md`; las evidencias de la evaluación académica anterior se conservan con sus resultados originales.
+[![CI](https://github.com/orlandotrujillo028-debug/NeonPlay/actions/workflows/ci.yml/badge.svg)](https://github.com/orlandotrujillo028-debug/NeonPlay/actions/workflows/ci.yml)
+
+GitHub Actions compila el proyecto y ejecuta las pruebas en cada cambio (`.github/workflows/ci.yml`). Se verifican la compilación de frontend y backend y **52 pruebas automáticas**: 26 de API sobre PostgreSQL real y 26 de carrito, reintentos y fechas. Las pruebas de API crean un esquema aleatorio `neonplay_test_<identificador>` y eliminan únicamente ese esquema al terminar. Necesitan la base iniciada y permisos para crear esquemas. No alteran el catálogo de `public`. Las correcciones y regresiones añadidas el 15/10/2026 están documentadas en `docs/CORRECCIONES_2026-10-15.md`; las evidencias de la evaluación académica anterior se conservan con sus resultados originales.
 
 En navegador se verificaron login de cliente y administrador, añadir al carrito, cantidades, checkout, historial, dashboard, edición administrativa, filtros, orden por precio, menú móvil, carga de las imágenes y ausencia de desbordamiento horizontal en las pantallas revisadas. Se revisaron los tamaños 1440×1000 y 390×844. Las capturas están en `docs/`.
 
@@ -164,6 +166,14 @@ Consulta `docs/ARQUITECTURA.md` para el modelo de datos y las rutas, y `docs/ART
 
 ## Evaluación académica de calidad
 
-La baseline `baseline-calidad-v1` identifica el commit `afac785407c041abc13f9b8651e70293aae488d4`. La rama `codex/calidad-evaluacion` contiene la evaluación, sus evidencias y la mejora comprobada. Consulta `quality/README.md` para reproducirla con cuentas ficticias y un esquema separado.
+Trabajo final de Calidad de Software (Desarrollo de Software, nivel 4, ITQ). Integrantes: Kevin Adrián Quiñonez Rocha, Orlando Eloy Trujillo y Francisco Almeida. Docente: Ing. Sebastián Landázuri G.
+
+- **Baseline:** tag `baseline-calidad-v1`, commit `afac785407c041abc13f9b8651e70293aae488d4` (10/10/2026).
+- **Versión actual:** rama `main`. Incluye la corrección de D01 (`f6c1a4c`), la de D02–D04 (`838aefb`), la integración continua y la reevaluación de ambas versiones.
+- **Comparación antes/después:** `quality/comparacion/comparacion.md`. La genera el flujo **Comparación de calidad** (`.github/workflows/calidad.yml`), que mide la baseline y la versión actual en la misma máquina con los mismos scripts.
+- **Defectos:** D01–D04 cerrados y O01 abierta, registrados como Issues del repositorio.
+- **Informe y presentación:** `quality/deliverables/final`.
+
+Consulta `quality/README.md` para reproducir la evaluación con cuentas ficticias y un esquema separado.
 
 Los comandos de desarrollo, compilación y pruebas comprueban si el cliente Prisma ya corresponde al esquema y a la versión instalada. Cuando está vigente, lo reutilizan: esto permite compilar con la API abierta en Windows sin reemplazar un motor bloqueado. Si cambias `schema.prisma`, detén la API antes de ejecutar `npm.cmd run db:generate`; después aplica las migraciones necesarias.
