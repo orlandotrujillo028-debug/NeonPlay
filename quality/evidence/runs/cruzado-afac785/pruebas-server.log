@@ -1,38 +1,38 @@
 
 [1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/NeonPlay/NeonPlay/antes/server[39m
 
- [31m❯[39m tests/api.test.ts [2m([22m[2m26 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[33m 4262[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mconsulta la salud de la base real[32m 7[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mregistra clientes sin aceptar escalación de rol[32m 7[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mbloquea correos duplicados y credenciales incorrectas [33m 676[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mexige sesión y permisos para administrar[32m 9[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza solicitudes con origen ajeno[32m 5[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22macepta el alias IPv4 local usado por Vite en desarrollo[32m 7[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mcrea, consulta, actualiza y elimina categorías y plataformas[32m 50[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mvalida y completa el CRUD de videojuegos[32m 62[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mcrea pedidos con importe exacto y conserva precios al archivar[32m 52[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mrevierte toda la compra si cualquier juego no tiene stock[32m 25[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22msuma la demanda del mismo juego en diferentes plataformas[32m 12[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mevita sobreventa con dos compras simultáneas[32m 28[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mrepetir una solicitud crea un solo pedido y descuenta una sola vez[32m 22[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza precios desactualizados sin descontar inventario[32m 11[2mms[22m[39m
-[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia quantity[39m[32m 23[2mms[22m[39m
+ [31m❯[39m tests/api.test.ts [2m([22m[2m26 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[33m 3154[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mconsulta la salud de la base real[32m 5[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mregistra clientes sin aceptar escalación de rol[32m 5[2mms[22m[39m
+   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mbloquea correos duplicados y credenciales incorrectas [33m 532[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mexige sesión y permisos para administrar[32m 8[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza solicitudes con origen ajeno[32m 4[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22macepta el alias IPv4 local usado por Vite en desarrollo[32m 6[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mcrea, consulta, actualiza y elimina categorías y plataformas[32m 35[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mvalida y completa el CRUD de videojuegos[32m 44[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mcrea pedidos con importe exacto y conserva precios al archivar[32m 36[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mrevierte toda la compra si cualquier juego no tiene stock[32m 19[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22msuma la demanda del mismo juego en diferentes plataformas[32m 10[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mevita sobreventa con dos compras simultáneas[32m 25[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mrepetir una solicitud crea un solo pedido y descuenta una sola vez[32m 20[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza precios desactualizados sin descontar inventario[32m 10[2mms[22m[39m
+[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia quantity[39m[32m 18[2mms[22m[39m
 [31m     → expected 409 "Conflict", got 200 "OK"[39m
-[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia price[39m[32m 23[2mms[22m[39m
+[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia price[39m[32m 16[2mms[22m[39m
 [31m     → expected 409 "Conflict", got 200 "OK"[39m
-[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia platform[39m[32m 21[2mms[22m[39m
+[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia platform[39m[32m 15[2mms[22m[39m
 [31m     → expected 409 "Conflict", got 200 "OK"[39m
-[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia game[39m[32m 21[2mms[22m[39m
+[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mrechaza reutilizar una clave de compra si cambia game[39m[32m 15[2mms[22m[39m
 [31m     → expected 409 "Conflict", got 200 "OK"[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mreconoce el mismo carrito aunque se reordenen o agrupen sus líneas[32m 24[2mms[22m[39m
-[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mresuelve compras simultáneas con una misma clave y carritos distintos sin confirmar el incorrecto[39m[32m 25[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mreconoce el mismo carrito aunque se reordenen o agrupen sus líneas[32m 17[2mms[22m[39m
+[31m   [31m×[31m API conectada a PostgreSQL[2m > [22mresuelve compras simultáneas con una misma clave y carritos distintos sin confirmar el incorrecto[39m[32m 16[2mms[22m[39m
 [31m     → expected [ 201, 201 ] to deeply equal [ 201, 409 ][39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mcancelar varias veces devuelve el stock una sola vez[32m 41[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mprotege categorías y plataformas asociadas[32m 11[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mcada cliente consulta únicamente sus pedidos [33m 347[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mgestiona usuarios y protege al administrador actual [33m 351[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza contraseñas que bcrypt truncaría[32m 3[2mms[22m[39m
-   [32m✓[39m API conectada a PostgreSQL[2m > [22mcierra y revoca la sesión del cliente[32m 7[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mcancelar varias veces devuelve el stock una sola vez[32m 29[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mprotege categorías y plataformas asociadas[32m 9[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mcada cliente consulta únicamente sus pedidos[32m 257[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mgestiona usuarios y protege al administrador actual[32m 261[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mrechaza contraseñas que bcrypt truncaría[32m 2[2mms[22m[39m
+   [32m✓[39m API conectada a PostgreSQL[2m > [22mcierra y revoca la sesión del cliente[32m 4[2mms[22m[39m
 
 [31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 5 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
 
@@ -82,7 +82,7 @@
 
 [2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m21 passed[39m[22m[90m (26)[39m
-[2m   Start at [22m 22:27:30
-[2m   Duration [22m 4.81s[2m (transform 178ms, setup 0ms, collect 213ms, tests 4.26s, environment 0ms, prepare 92ms)[22m
+[2m   Start at [22m 22:37:23
+[2m   Duration [22m 3.49s[2m (transform 114ms, setup 0ms, collect 137ms, tests 3.15s, environment 0ms, prepare 54ms)[22m
 
 JSON report written to /home/runner/work/NeonPlay/NeonPlay/actual/quality/evidence/runs/cruzado-afac785/pruebas-server.json

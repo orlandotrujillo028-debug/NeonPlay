@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-16T22:31:29.094Z",
+  "date": "2026-10-16T22:40:48.400Z",
   "antes": "afac785407c041abc13f9b8651e70293aae488d4",
-  "despues": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
+  "despues": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
   "rows": [
     {
       "car": "Adecuación funcional",
       "metrica": "Casos de navegador CP01–CP20 aprobados",
-      "antes": "19/20",
-      "despues": "19/20",
+      "antes": "20/20",
+      "despues": "20/20",
       "criterio": "≥ 95%",
       "conclusion": "Antes: Cumple; después: Cumple"
     },
@@ -86,26 +86,34 @@
     {
       "car": "Eficiencia de desempeño",
       "metrica": "Catálogo: mediana / p95 (100 consultas, ms)",
-      "antes": "5,12 / 6,02",
-      "despues": "5,08 / 5,89",
+      "antes": "5,34 / 6,58",
+      "despues": "5,27 / 7,21",
       "criterio": "≤ 300 / ≤ 500 ms",
       "conclusion": "Antes: Cumple; después: Cumple"
     },
     {
       "car": "Eficiencia de desempeño",
       "metrica": "Lighthouse: rendimiento (promedio de 4 páginas)",
-      "antes": "n/d",
+      "antes": "85",
       "despues": "85",
       "criterio": "≥ 90 (banda verde de Lighthouse)",
-      "conclusion": "Antes: Sin dato; después: No cumple"
+      "conclusion": "Antes: No cumple; después: No cumple"
     },
     {
       "car": "Eficiencia de desempeño",
       "metrica": "Lighthouse: LCP de la página más lenta (ms)",
-      "antes": "n/d",
-      "despues": "12.219",
+      "antes": "12.212",
+      "despues": "12.212",
       "criterio": "≤ 2.500 ms",
-      "conclusion": "Antes: Sin dato; después: No cumple"
+      "conclusion": "Antes: No cumple; después: No cumple"
+    },
+    {
+      "car": "Eficiencia de desempeño",
+      "metrica": "Lighthouse: peso de la página más pesada (MB)",
+      "antes": "14,4",
+      "despues": "14,4",
+      "criterio": "≤ 3 MB (criterio del equipo)",
+      "conclusion": "Antes: No cumple; después: No cumple"
     },
     {
       "car": "Eficiencia de desempeño",
@@ -118,10 +126,10 @@
     {
       "car": "Capacidad de interacción",
       "metrica": "Lighthouse: accesibilidad (promedio de 4 páginas)",
-      "antes": "n/d",
+      "antes": "94",
       "despues": "94",
       "criterio": "≥ 90",
-      "conclusion": "Antes: Sin dato; después: Cumple"
+      "conclusion": "Antes: Cumple; después: Cumple"
     },
     {
       "car": "Capacidad de interacción",
@@ -150,10 +158,10 @@
     {
       "car": "Seguridad",
       "metrica": "Lighthouse: buenas prácticas (promedio)",
-      "antes": "n/d",
+      "antes": "96",
       "despues": "96",
       "criterio": "≥ 90",
-      "conclusion": "Antes: Sin dato; después: Cumple"
+      "conclusion": "Antes: Cumple; después: Cumple"
     },
     {
       "car": "Mantenibilidad",
@@ -321,7 +329,7 @@
     }
   },
   "lighthouse": {
-    "despues": {
+    "antes": {
       "inicio": {
         "url": "/",
         "scores": {
@@ -331,11 +339,11 @@
           "seo": 92
         },
         "metrics": {
-          "first-contentful-paint": 748,
-          "largest-contentful-paint": 2953,
-          "total-blocking-time": 40,
+          "first-contentful-paint": 744,
+          "largest-contentful-paint": 2932,
+          "total-blocking-time": 0,
           "cumulative-layout-shift": 0,
-          "total-byte-weight": 11812506
+          "total-byte-weight": 11810487
         },
         "failedAccessibilityAudits": [
           "color-contrast",
@@ -351,9 +359,93 @@
           "seo": 92
         },
         "metrics": {
-          "first-contentful-paint": 754,
-          "largest-contentful-paint": 12219,
-          "total-blocking-time": 35,
+          "first-contentful-paint": 747,
+          "largest-contentful-paint": 12212,
+          "total-blocking-time": 2,
+          "cumulative-layout-shift": 0.01,
+          "total-byte-weight": 14446652
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "heading-order",
+          "label-content-name-mismatch"
+        ]
+      },
+      "detalle": {
+        "url": "/game/nexus-beyond-the-void",
+        "scores": {
+          "performance": 83,
+          "accessibility": 95,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 744,
+          "largest-contentful-paint": 2885,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.07,
+          "total-byte-weight": 3207147
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "label-content-name-mismatch"
+        ]
+      },
+      "carrito": {
+        "url": "/cart",
+        "scores": {
+          "performance": 99,
+          "accessibility": 92,
+          "best-practices": 96,
+          "seo": 91
+        },
+        "metrics": {
+          "first-contentful-paint": 763,
+          "largest-contentful-paint": 814,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0,
+          "total-byte-weight": 629312
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "heading-order",
+          "label-content-name-mismatch"
+        ]
+      }
+    },
+    "despues": {
+      "inicio": {
+        "url": "/",
+        "scores": {
+          "performance": 83,
+          "accessibility": 96,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 752,
+          "largest-contentful-paint": 2935,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0,
+          "total-byte-weight": 11812497
+        },
+        "failedAccessibilityAudits": [
+          "color-contrast",
+          "label-content-name-mismatch"
+        ]
+      },
+      "catalogo": {
+        "url": "/catalog",
+        "scores": {
+          "performance": 75,
+          "accessibility": 94,
+          "best-practices": 96,
+          "seo": 92
+        },
+        "metrics": {
+          "first-contentful-paint": 769,
+          "largest-contentful-paint": 12212,
+          "total-blocking-time": 2,
           "cumulative-layout-shift": 0.01,
           "total-byte-weight": 14448663
         },
@@ -372,11 +464,11 @@
           "seo": 92
         },
         "metrics": {
-          "first-contentful-paint": 743,
-          "largest-contentful-paint": 2887,
+          "first-contentful-paint": 752,
+          "largest-contentful-paint": 2889,
           "total-blocking-time": 0,
           "cumulative-layout-shift": 0.07,
-          "total-byte-weight": 3207955
+          "total-byte-weight": 3209158
         },
         "failedAccessibilityAudits": [
           "color-contrast",
@@ -392,8 +484,8 @@
           "seo": 91
         },
         "metrics": {
-          "first-contentful-paint": 745,
-          "largest-contentful-paint": 832,
+          "first-contentful-paint": 765,
+          "largest-contentful-paint": 812,
           "total-blocking-time": 0,
           "cumulative-layout-shift": 0,
           "total-byte-weight": 631323
@@ -543,7 +635,7 @@
   "catalogo": {
     "antes": {
       "30": {
-        "date": "2026-10-16T22:26:28.490Z",
+        "date": "2026-10-16T22:34:36.432Z",
         "commit": "afac785407c041abc13f9b8651e70293aae488d4",
         "shortCommit": "afac785",
         "label": "antes",
@@ -552,13 +644,13 @@
         "warmup": 5,
         "intervalMs": 250,
         "sampleCount": 30,
-        "meanMs": 5.548,
-        "sdMs": 0.793,
-        "medianMs": 5.275,
-        "p95Ms": 7.504,
-        "p99Ms": 8.527,
-        "minMs": 4.912,
-        "maxMs": 8.527,
+        "meanMs": 5.739,
+        "sdMs": 0.802,
+        "medianMs": 5.686,
+        "p95Ms": 6.925,
+        "p99Ms": 7.614,
+        "minMs": 4.487,
+        "maxMs": 7.614,
         "correct": 30,
         "criterion": {
           "medianMaxMs": 300,
@@ -567,7 +659,7 @@
         }
       },
       "100": {
-        "date": "2026-10-16T22:26:54.144Z",
+        "date": "2026-10-16T22:35:02.070Z",
         "commit": "afac785407c041abc13f9b8651e70293aae488d4",
         "shortCommit": "afac785",
         "label": "antes",
@@ -576,13 +668,13 @@
         "warmup": 5,
         "intervalMs": 250,
         "sampleCount": 100,
-        "meanMs": 5.24,
-        "sdMs": 0.533,
-        "medianMs": 5.12,
-        "p95Ms": 6.019,
-        "p99Ms": 7.676,
-        "minMs": 4.744,
-        "maxMs": 8.112,
+        "meanMs": 5.516,
+        "sdMs": 0.823,
+        "medianMs": 5.342,
+        "p95Ms": 6.584,
+        "p99Ms": 8.965,
+        "minMs": 4.427,
+        "maxMs": 9.103,
         "correct": 100,
         "criterion": {
           "medianMaxMs": 300,
@@ -593,22 +685,22 @@
     },
     "despues": {
       "30": {
-        "date": "2026-10-16T22:28:34.810Z",
-        "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
-        "shortCommit": "e2c9924",
+        "date": "2026-10-16T22:38:10.060Z",
+        "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+        "shortCommit": "bd1ae75",
         "label": "despues",
         "endpoint": "/api/games?limit=12&sort=price-asc",
         "method": "HTTP secuencial, incluye lectura y validación JSON",
         "warmup": 5,
         "intervalMs": 250,
         "sampleCount": 30,
-        "meanMs": 5.389,
-        "sdMs": 0.659,
-        "medianMs": 5.214,
-        "p95Ms": 6.588,
-        "p99Ms": 7.731,
-        "minMs": 4.745,
-        "maxMs": 7.731,
+        "meanMs": 5.905,
+        "sdMs": 1.119,
+        "medianMs": 5.527,
+        "p95Ms": 7.846,
+        "p99Ms": 9.258,
+        "minMs": 4.504,
+        "maxMs": 9.258,
         "correct": 30,
         "criterion": {
           "medianMaxMs": 300,
@@ -617,22 +709,22 @@
         }
       },
       "100": {
-        "date": "2026-10-16T22:29:00.461Z",
-        "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
-        "shortCommit": "e2c9924",
+        "date": "2026-10-16T22:38:35.734Z",
+        "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+        "shortCommit": "bd1ae75",
         "label": "despues",
         "endpoint": "/api/games?limit=12&sort=price-asc",
         "method": "HTTP secuencial, incluye lectura y validación JSON",
         "warmup": 5,
         "intervalMs": 250,
         "sampleCount": 100,
-        "meanMs": 5.194,
-        "sdMs": 0.459,
-        "medianMs": 5.084,
-        "p95Ms": 5.889,
-        "p99Ms": 7.326,
-        "minMs": 4.635,
-        "maxMs": 7.471,
+        "meanMs": 5.505,
+        "sdMs": 0.875,
+        "medianMs": 5.269,
+        "p95Ms": 7.213,
+        "p99Ms": 7.754,
+        "minMs": 4.136,
+        "maxMs": 8.32,
         "correct": 100,
         "criterion": {
           "medianMaxMs": 300,
@@ -662,7 +754,7 @@
   },
   "estatica": {
     "antes": {
-      "date": "2026-10-16T22:25:49.953Z",
+      "date": "2026-10-16T22:34:01.036Z",
       "commit": "afac785407c041abc13f9b8651e70293aae488d4",
       "shortCommit": "afac785",
       "label": "antes",
@@ -754,9 +846,9 @@
       ]
     },
     "despues": {
-      "date": "2026-10-16T22:28:06.435Z",
-      "commit": "e2c9924d812c5a089eb46aeb8d026a5c25013a3d",
-      "shortCommit": "e2c9924",
+      "date": "2026-10-16T22:37:47.367Z",
+      "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+      "shortCommit": "bd1ae75",
       "label": "despues",
       "method": "TypeScript compiler API; SLOC sin líneas vacías ni comentarios; complejidad de McCabe por función",
       "productionFiles": 21,

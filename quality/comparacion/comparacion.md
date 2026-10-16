@@ -1,15 +1,15 @@
 # Matriz de comparación antes/después
 
-Generada el 2026-10-16T22:31:29.094Z por `quality/compare-versions.mjs`. Ambas versiones se midieron en la misma máquina de GitHub Actions, una después de otra, con los mismos scripts y datos ficticios.
+Generada el 2026-10-16T22:40:48.400Z por `quality/compare-versions.mjs`. Ambas versiones se midieron en la misma máquina de GitHub Actions, una después de otra, con los mismos scripts y datos ficticios.
 
 - Antes: `afac785407c041abc13f9b8651e70293aae488d4` (tag baseline-calidad-v1).
-- Después: `e2c9924d812c5a089eb46aeb8d026a5c25013a3d`.
+- Después: `bd1ae75385532cd6de0c3ebb744b536ccd1f8eab`.
 - Entorno: Linux 6.17.0-1022-azure, Node v22.23.3, Chrome 155.0.8059.39.
 - Pruebas cruzadas: Archivos de prueba de la versión actual copiados sobre el código de la baseline, sin modificar el código de producción.
 
-| Característica | Métrica | Antes (afac785) | Después (e2c9924) | Criterio | Conclusión |
+| Característica | Métrica | Antes (afac785) | Después (bd1ae75) | Criterio | Conclusión |
 |---|---|---|---|---|---|
-| Adecuación funcional | Casos de navegador CP01–CP20 aprobados | 19/20 | 19/20 | ≥ 95% | Antes: Cumple; después: Cumple |
+| Adecuación funcional | Casos de navegador CP01–CP20 aprobados | 20/20 | 20/20 | ≥ 95% | Antes: Cumple; después: Cumple |
 | Adecuación funcional | Las 52 pruebas actuales ejecutadas sobre el código | 27/52 (51,9%); 5 fallan y 20 no ejecutables | 52/52 (100,0%) | 100% | Antes: No cumple; después: Cumple |
 | Adecuación funcional | Conciliación del carrito correcta (D04, 6 escenarios) | 0/6 (la lógica no existía como módulo verificable) | 6/6 | 6/6 | Antes: No cumple; después: Cumple |
 | Adecuación funcional | Defectos críticos abiertos (escala de la Tabla 19) | 2 (D02, D03) | 0 | 0 | Antes: No cumple; después: Cumple |
@@ -19,15 +19,16 @@ Generada el 2026-10-16T22:31:29.094Z por `quality/compare-versions.mjs`. Ambas v
 | Fiabilidad | Clave de compra conservada ante recargas y reintentos (D03, 14 escenarios) | 0/14 (la lógica no existía como módulo verificable) | 14/14 | 14/14 | Antes: No cumple; después: Cumple |
 | Fiabilidad | Respuestas correctas del catálogo (30 consultas) | 30/30 | 30/30 | 30/30 | Antes: Cumple; después: Cumple |
 | Fiabilidad | Respuestas correctas del catálogo (100 consultas) | 100/100 | 100/100 | 100/100 | Antes: Cumple; después: Cumple |
-| Eficiencia de desempeño | Catálogo: mediana / p95 (100 consultas, ms) | 5,12 / 6,02 | 5,08 / 5,89 | ≤ 300 / ≤ 500 ms | Antes: Cumple; después: Cumple |
-| Eficiencia de desempeño | Lighthouse: rendimiento (promedio de 4 páginas) | n/d | 85 | ≥ 90 (banda verde de Lighthouse) | Antes: Sin dato; después: No cumple |
-| Eficiencia de desempeño | Lighthouse: LCP de la página más lenta (ms) | n/d | 12.219 | ≤ 2.500 ms | Antes: Sin dato; después: No cumple |
+| Eficiencia de desempeño | Catálogo: mediana / p95 (100 consultas, ms) | 5,34 / 6,58 | 5,27 / 7,21 | ≤ 300 / ≤ 500 ms | Antes: Cumple; después: Cumple |
+| Eficiencia de desempeño | Lighthouse: rendimiento (promedio de 4 páginas) | 85 | 85 | ≥ 90 (banda verde de Lighthouse) | Antes: No cumple; después: No cumple |
+| Eficiencia de desempeño | Lighthouse: LCP de la página más lenta (ms) | 12.212 | 12.212 | ≤ 2.500 ms | Antes: No cumple; después: No cumple |
+| Eficiencia de desempeño | Lighthouse: peso de la página más pesada (MB) | 14,4 | 14,4 | ≤ 3 MB (criterio del equipo) | Antes: No cumple; después: No cumple |
 | Eficiencia de desempeño | JavaScript del cliente (kB, sin comprimir / gzip) | 573,88 / 145,09 | 575,89 / 145,67 | Archivo ≤ 500 kB (aviso de Vite) | Antes: No cumple; después: No cumple |
-| Capacidad de interacción | Lighthouse: accesibilidad (promedio de 4 páginas) | n/d | 94 | ≥ 90 | Antes: Sin dato; después: Cumple |
+| Capacidad de interacción | Lighthouse: accesibilidad (promedio de 4 páginas) | 94 | 94 | ≥ 90 | Antes: Cumple; después: Cumple |
 | Capacidad de interacción | Tareas sin ayuda en el piloto (O01) | 3/5 = 60% (P01, autorreporte) | Pendiente: protocolo del Anexo F con participantes nuevos | ≥ 80% | Antes: No cumple; después: sin medir |
 | Seguridad | Vulnerabilidades altas o críticas en dependencias (npm audit) | 13 | 13 | 0 | Antes: No cumple; después: No cumple |
 | Seguridad | Vulnerabilidades totales en dependencias (npm audit) | 14 | 14 | Tendencia | Mismas dependencias en ambas versiones |
-| Seguridad | Lighthouse: buenas prácticas (promedio) | n/d | 96 | ≥ 90 | Antes: Sin dato; después: Cumple |
+| Seguridad | Lighthouse: buenas prácticas (promedio) | 96 | 96 | ≥ 90 | Antes: Cumple; después: Cumple |
 | Mantenibilidad | Pruebas automatizadas propias de la versión (aprobadas/total) | 26/26 | 52/52 | 100% aprobadas | Antes: Cumple; después: Cumple |
 | Mantenibilidad | Cobertura de líneas del servidor | 88,8% | 89,0% | Tendencia ascendente |  |
 | Mantenibilidad | Cobertura de ramas del servidor | 78,8% | 81,8% | Tendencia ascendente |  |

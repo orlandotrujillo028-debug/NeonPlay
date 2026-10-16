@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-16T22:37:47.412Z",
+  "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+  "shortCommit": "bd1ae75",
+  "label": "despues",
+  "jsBytes": 575892,
+  "jsGzipBytes": 145670,
+  "cssBytes": 49202,
+  "cssGzipBytes": 11344,
+  "largestJsKb": 575.89,
+  "viteWarningOver500Kb": true,
+  "assets": [
+    {
+      "file": "index-BF7SECNi.css",
+      "type": "css",
+      "bytes": 49202,
+      "gzipBytes": 11344
+    },
+    {
+      "file": "index-BWwfEwm4.js",
+      "type": "js",
+      "bytes": 575892,
+      "gzipBytes": 145670
+    }
+  ]
+}

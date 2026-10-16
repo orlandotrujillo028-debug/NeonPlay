@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-16T22:37:47.367Z",
+  "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+  "shortCommit": "bd1ae75",
+  "label": "despues",
+  "method": "TypeScript compiler API; SLOC sin líneas vacías ni comentarios; complejidad de McCabe por función",
+  "productionFiles": 21,
+  "productionSloc": 3715,
+  "testFiles": 4,
+  "testSloc": 578,
+  "testToCodeRatio": 0.156,
+  "functions": 279,
+  "complexityTotal": 663,
+  "complexityMean": 2.38,
+  "complexityMax": 29,
+  "functionsOver10": 10,
+  "functionsOver20": 2,
+  "largestFiles": [
+    {
+      "file": "client/src/pages/Admin.tsx",
+      "sloc": 1007
+    },
+    {
+      "file": "client/src/pages/Account.tsx",
+      "sloc": 550
+    },
+    {
+      "file": "client/src/pages/Shop.tsx",
+      "sloc": 546
+    },
+    {
+      "file": "client/src/App.tsx",
+      "sloc": 260
+    },
+    {
+      "file": "server/src/routes/admin.ts",
+      "sloc": 235
+    }
+  ],
+  "mostComplex": [
+    {
+      "file": "client/src/pages/Admin.tsx",
+      "name": "AdminPage",
+      "cc": 29
+    },
+    {
+      "file": "client/src/pages/Account.tsx",
+      "name": "AuthPage",
+      "cc": 22
+    },
+    {
+      "file": "client/src/lib.ts",
+      "name": "anónima (línea 63)",
+      "cc": 13
+    },
+    {
+      "file": "client/src/pages/Admin.tsx",
+      "name": "GameForm",
+      "cc": 13
+    },
+    {
+      "file": "client/src/pages/Shop.tsx",
+      "name": "Home",
+      "cc": 13
+    },
+    {
+      "file": "server/src/app.ts",
+      "name": "errors",
+      "cc": 13
+    },
+    {
+      "file": "server/src/routes/orders.ts",
+      "name": "anónima (línea 38)",
+      "cc": 13
+    },
+    {
+      "file": "server/src/routes/admin.ts",
+      "name": "anónima (línea 177)",
+      "cc": 12
+    },
+    {
+      "file": "client/src/pages/Account.tsx",
+      "name": "CartPage",
+      "cc": 11
+    },
+    {
+      "file": "client/src/pages/Shop.tsx",
+      "name": "CatalogPage",
+      "cc": 11
+    }
+  ],
+  "files": [
+    {
+      "file": "client/src/App.tsx",
+      "sloc": 260
+    },
+    {
+      "file": "client/src/cart.ts",
+      "sloc": 20
+    },
+    {
+      "file": "client/src/checkout.ts",
+      "sloc": 52
+    },
+    {
+      "file": "client/src/components.tsx",
+      "sloc": 144
+    },
+    {
+      "file": "client/src/hooks.ts",
+      "sloc": 23
+    },
+    {
+      "file": "client/src/lib.ts",
+      "sloc": 89
+    },
+    {
+      "file": "client/src/main.tsx",
+      "sloc": 15
+    },
+    {
+      "file": "client/src/pages/Account.tsx",
+      "sloc": 550
+    },
+    {
+      "file": "client/src/pages/Admin.tsx",
+      "sloc": 1007
+    },
+    {
+      "file": "client/src/pages/Shop.tsx",
+      "sloc": 546
+    },
+    {
+      "file": "client/src/store.tsx",
+      "sloc": 150
+    },
+    {
+      "file": "client/src/types.ts",
+      "sloc": 59
+    },
+    {
+      "file": "server/src/app.ts",
+      "sloc": 114
+    },
+    {
+      "file": "server/src/config.ts",
+      "sloc": 28
+    },
+    {
+      "file": "server/src/db.ts",
+      "sloc": 2
+    },
+    {
+      "file": "server/src/index.ts",
+      "sloc": 19
+    },
+    {
+      "file": "server/src/lib.ts",
+      "sloc": 170
+    },
+    {
+      "file": "server/src/routes/admin.ts",
+      "sloc": 235
+    },
+    {
+      "file": "server/src/routes/auth.ts",
+      "sloc": 52
+    },
+    {
+      "file": "server/src/routes/catalog.ts",
+      "sloc": 56
+    },
+    {
+      "file": "server/src/routes/orders.ts",
+      "sloc": 124
+    }
+  ],
+  "testFilesDetail": [
+    {
+      "file": "client/src/cart.test.ts",
+      "sloc": 71
+    },
+    {
+      "file": "client/src/checkout.test.ts",
+      "sloc": 116
+    },
+    {
+      "file": "client/src/lib.test.ts",
+      "sloc": 42
+    },
+    {
+      "file": "server/tests/api.test.ts",
+      "sloc": 349
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-16T22:37:50.558Z",
+  "baseline": "afac785407c041abc13f9b8651e70293aae488d4",
+  "sourceCommit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+  "versionLabel": "despues",
+  "schema": "neonplay_quality_a734a2c2aac8",
+  "baseUrl": "http://127.0.0.1:4011",
+  "node": "v22.23.3",
+  "operatingSystem": "linux",
+  "adminEmail": "admin@quality.test",
+  "customerEmail": "player@quality.test",
+  "games": [
+    {
+      "id": "cmvbjtb13000e0cfvkjrewd4b",
+      "name": "Emberfall",
+      "slug": "emberfall",
+      "price": "49.99",
+      "stock": 18,
+      "categoryId": "cmvbjtb0n00030cfvbv59uady",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0v00080cfv3rjt9vmq",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmvbjtb0x00090cfv73jvq2t2",
+          "name": "Xbox Series"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb15000g0cfvxr7584dp",
+      "name": "Velocity 2099",
+      "slug": "velocity-2099",
+      "price": "29.99",
+      "stock": 22,
+      "categoryId": "cmvbjtb0p00040cfva7sqw69k",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0x00090cfv73jvq2t2",
+          "name": "Xbox Series"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb17000i0cfvuhzzh608",
+      "name": "Titan Protocol",
+      "slug": "titan-protocol",
+      "price": "44.99",
+      "stock": 15,
+      "categoryId": "cmvbjtb0k00020cfv3grq5xpe",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0v00080cfv3rjt9vmq",
+          "name": "PlayStation 5"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb19000k0cfvjfxuhuuy",
+      "name": "Astral Odyssey",
+      "slug": "astral-odyssey",
+      "price": "34.99",
+      "stock": 26,
+      "categoryId": "cmvbjtb0r00050cfv9wr7e5ua",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0v00080cfv3rjt9vmq",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmvbjtb0y000a0cfvjwajz1o6",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb1b000m0cfvkbs799f3",
+      "name": "Echoes of Aether",
+      "slug": "echoes-of-aether",
+      "price": "24.99",
+      "stock": 12,
+      "categoryId": "cmvbjtb0n00030cfvbv59uady",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0y000a0cfvjwajz1o6",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb1c000o0cfvidk14874",
+      "name": "Neon Drift",
+      "slug": "neon-drift",
+      "price": "19.99",
+      "stock": 4,
+      "categoryId": "cmvbjtb0p00040cfva7sqw69k",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0y000a0cfvjwajz1o6",
+          "name": "Nintendo Switch"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb1e000q0cfvf5xx04u6",
+      "name": "Void Command",
+      "slug": "void-command",
+      "price": "29.99",
+      "stock": 0,
+      "categoryId": "cmvbjtb0s00060cfvnenfb51v",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        }
+      ]
+    },
+    {
+      "id": "cmvbjtb10000c0cfvckutr7ef",
+      "name": "Nexus: Beyond the Void",
+      "slug": "nexus-beyond-the-void",
+      "price": "39.99",
+      "stock": 2,
+      "categoryId": "cmvbjtb0k00020cfv3grq5xpe",
+      "platforms": [
+        {
+          "id": "cmvbjtb0t00070cfv7lbbpp5q",
+          "name": "PC"
+        },
+        {
+          "id": "cmvbjtb0v00080cfv3rjt9vmq",
+          "name": "PlayStation 5"
+        },
+        {
+          "id": "cmvbjtb0x00090cfv73jvq2t2",
+          "name": "Xbox Series"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-16T22:38:10.060Z",
+  "commit": "bd1ae75385532cd6de0c3ebb744b536ccd1f8eab",
+  "shortCommit": "bd1ae75",
+  "label": "despues",
+  "endpoint": "/api/games?limit=12&sort=price-asc",
+  "method": "HTTP secuencial, incluye lectura y validación JSON",
+  "warmup": 5,
+  "intervalMs": 250,
+  "sampleCount": 30,
+  "meanMs": 5.905,
+  "sdMs": 1.119,
+  "medianMs": 5.527,
+  "p95Ms": 7.846,
+  "p99Ms": 9.258,
+  "minMs": 4.504,
+  "maxMs": 9.258,
+  "correct": 30,
+  "criterion": {
+    "medianMaxMs": 300,
+    "p95MaxMs": 500,
+    "correctRequired": 30
+  },
+  "samples": [
+    {
+      "sample": 1,
+      "ms": 6.862,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 2,
+      "ms": 6.198,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 3,
+      "ms": 6.086,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 4,
+      "ms": 5.381,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 5,
+      "ms": 7.846,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 6,
+      "ms": 7.324,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 7,
+      "ms": 6.258,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 8,
+      "ms": 6.951,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 9,
+      "ms": 6.898,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 10,
+      "ms": 5.296,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 11,
+      "ms": 5.133,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 12,
+      "ms": 5.061,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 13,
+      "ms": 4.504,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 14,
+      "ms": 4.731,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 15,
+      "ms": 5.269,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 16,
+      "ms": 5.172,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 17,
+      "ms": 6.026,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 18,
+      "ms": 6.289,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 19,
+      "ms": 4.678,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 20,
+      "ms": 5.192,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 21,
+      "ms": 5.418,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 22,
+      "ms": 9.258,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 23,
+      "ms": 4.716,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 24,
+      "ms": 5.593,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 25,
+      "ms": 5.461,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 26,
+      "ms": 4.754,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 27,
+      "ms": 6.244,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 28,
+      "ms": 7.769,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 29,
+      "ms": 5.753,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "sample": 30,
+      "ms": 5.027,
+      "status": 200,
+      "correct": true
+    }
+  ]
+}

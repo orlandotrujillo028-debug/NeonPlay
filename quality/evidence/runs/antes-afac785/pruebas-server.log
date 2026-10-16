@@ -2,15 +2,13 @@
 [1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/NeonPlay/NeonPlay/antes/server[39m
       [2mCoverage enabled with [22m[33mv8[39m
 
- [32m✓[39m tests/api.test.ts [2m([22m[2m20 tests[22m[2m)[22m[33m 5059[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mbloquea correos duplicados y credenciales incorrectas [33m 953[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mcada cliente consulta únicamente sus pedidos [33m 452[2mms[22m[39m
-   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mgestiona usuarios y protege al administrador actual [33m 464[2mms[22m[39m
+ [32m✓[39m tests/api.test.ts [2m([22m[2m20 tests[22m[2m)[22m[33m 3173[2mms[22m[39m
+   [33m[2m✓[22m[39m API conectada a PostgreSQL[2m > [22mbloquea correos duplicados y credenciales incorrectas [33m 558[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m20 passed[39m[22m[90m (20)[39m
-[2m   Start at [22m 22:25:41
-[2m   Duration [22m 5.81s[2m (transform 155ms, setup 0ms, collect 194ms, tests 5.06s, environment 0ms, prepare 98ms)[22m
+[2m   Start at [22m 22:33:55
+[2m   Duration [22m 3.70s[2m (transform 103ms, setup 0ms, collect 140ms, tests 3.17s, environment 0ms, prepare 69ms)[22m
 
 JSON report written to /home/runner/work/NeonPlay/NeonPlay/actual/quality/evidence/runs/antes-afac785/pruebas-server.json
 [34m % [39m[2mCoverage report from [22m[33mv8[39m
