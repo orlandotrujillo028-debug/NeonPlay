@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   push:
     branches: ['calidad/**']
-    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'docs/**', '**/*.md']
+    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'quality/matrices/**', 'docs/**', '**/*.md']
   pull_request:
     branches: [main]
-    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'docs/**', '**/*.md']
+    paths-ignore: ['quality/evidence/**', 'quality/comparacion/**', 'quality/deliverables/**', 'quality/piloto-O01/**', 'quality/matrices/**', 'docs/**', '**/*.md']
 
 permissions:
   contents: write
